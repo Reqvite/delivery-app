@@ -1,0 +1,26 @@
+.AppLink {
+  color: var(--primary-color);
+  font: var(--font-l);
+  font-weight: var(--font-weight-bolder);
+
+  &.active {
+    color: var(--active-color);
+  }
+
+  &:hover:not(.active),
+  &:focus-visible:not(.active) {
+    color: var(--accent-color);
+  }
+
+  transition-property: color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+}
+
+.primary {
+  color: var(--primary-color);
+}
+
+.secondary {
+  color: var(--secondary-color);
+}

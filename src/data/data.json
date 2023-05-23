@@ -1,0 +1,355 @@
+[ {
+     "_id": {
+    "$oid": "640c2dd963a319ea671e365b"
+  },
+      "title": "Big Mac",
+      "price": 4.99,
+      "ingredients": ["Two beef patties", "Special sauce", "Lettuce", "Cheese", "Pickles", "Onions", "Sesame seed bun"],
+      "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684877202/DC_201907_0005_BigMac_832x472_1-3-product-tile-desktop_jnhhq6.jpg"
+    },
+    {
+    "_id": {
+    "$oid": "640c2dd963a319ea671e365c"
+  },
+      "title": "Quarter Pounder with Cheese",
+      "price": 4.79,
+      "ingredients": ["Quarter pound beef patty", "Cheese", "Onions", "Pickles", "Ketchup", "Mustard", "Sesame seed bun"],
+      "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684877121/DC_202201_4282_QuarterPounderCheeseDeluxe_Shredded_832x472_1-3-product-tile-desktop_isziiz.jpg"
+    },
+    {
+         "_id": {
+    "$oid": "640c2dd963a319ea671e365d"
+  },
+      "title": "McChicken",
+      "price": 3.99,
+      "ingredients": ["Breaded chicken patty", "Lettuce", "Mayonnaise", "Sesame seed bun"],
+      "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684877065/b5480bde80f41b85_hero-pdt-ChickenBigMac_0_z4ac6u.webp"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e3660"
+  },
+      "title": "Filet-O-Fish",
+      "price": 3.79,
+      "ingredients": ["Breaded fish patty", "Tartar sauce", "Cheese", "Steamed bun"],
+      "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876986/filet-o-fish-hamburger-mcdonald-s-quarter-pounder-cheeseburger-big-n-tasty-png-favpng-0b1i84vXa5BnzUq0M4a9CPnPp_w68zuh.jpg"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e3661"
+  },
+      "title": "Chicken McNuggets",
+      "price": 4.99,
+      "ingredients": ["White meat chicken", "Breading", "Served with dipping sauce"],
+      "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876912/png-transparent-chicken-nugget-fast-food-mcdonald-s-chicken-mcnuggets-mcdonald-s-big-mac-oldest-mcdonald-s-restaurant-chicken-nuggets-miscellaneous-food-fast-food-restaurant_v6gndk.png"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e3662"
+  },
+      "title": "French Fries",
+      "price": 2.29,
+      "ingredients": ["Potatoes", "Vegetable oil", "Salt"],
+      "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876868/png-clipart-mcdonald-s-french-fries-hamburger-mcdonald-s-big-mac-fast-food-burger-king-mcdonald-s-french-fries_ik6nbn.png"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e3663"
+  },
+      "title": "Big N' Tasty",
+      "price": 4.49,
+      "ingredients": ["Quarter pound beef patty", "Lettuce", "Tomato", "Mayonnaise", "Ketchup", "Pickles", "Onions", "Sesame seed bun"],
+      "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876797/png-transparent-big-n-tasty-hamburger-cheeseburger-mcdonald-s-big-mac-mcdonald-s-quarter-pounder-hamburger-meal-set-food-recipe-cheeseburger-thumbnail_isaxa2.png"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e3664"
+  },
+      "title": "McFlurry",
+      "price": 2.99,
+      "ingredients": ["Soft serve ice cream", "Various toppings"],
+      "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876754/png-transparent-milkshake-mcflurry-hamburger-cheeseburger-mcdonald-s-chicken-mcnuggets-oreo-cream-food-frozen-dessert_u8wyzn.png"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e3665"
+  },
+      "title": "Chicken Caesar Salad",
+      "price": 5.49,
+      "ingredients": ["Grilled chicken", "Romaine lettuce", "Parmesan cheese", "Caesar dressing", "Croutons"],
+      "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876698/Chicken-Salad_mdsnwz.png"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e3666"
+  },
+      "title": "Egg McMuffin",
+      "price": 3.79,
+      "ingredients": ["English muffin", "Egg", "Canadian bacon", "Cheese"],
+      "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876655/mcdonalds-egg-mcmuffin_1-3-product-tile-desktop_n12cn6.jpg"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e3667"
+  },
+      "title": "Sausage McMuffin",
+      "price": 2.99,
+      "ingredients": ["English muffin", "Sausage patty", "Cheese"],
+      "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876567/Sausage_McMuffin_vhotun.png"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e3668"
+  },
+      "title": "Sausage McMuffin with Egg",
+      "price": 3.49,
+      "ingredients": ["English muffin", "Sausage patty", "Egg", "Cheese"],
+        "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876497/mcdonalds-Sausage-Egg-McMuffin-2_1-3-product-tile-desktop_z8lvgt.jpg"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e3669"
+  },
+      "title": "Big Breakfast",
+      "price": 5.99,
+      "ingredients": ["Scrambled eggs", "Sausage", "Hash browns", "Hotcakes", "Biscuit", "Butter", "Syrup"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876411/Big_Breakfast_zd6c0k.png"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e366a"
+  },
+      "title": "Cheeseburger",
+      "price": 1.29,
+      "ingredients": ["Beef patty", "Cheese", "Pickles", "Ketchup", "Mustard", "Onions", "Sesame seed bun"],
+        "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876317/DC_202006_0003_Cheeseburger_StraightBun_832x472_1-3-product-tile-desktop_sgd6ma.jpg"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e366b"
+  },
+      "title": "McDouble",
+      "price": 2.49,
+      "ingredients": ["Two beef patties", "American cheese", "Pickles", "Onions", "Ketchup", "Mustard", "Sesame seed bun"],
+        "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876206/202002_0592_McDouble_Alt_832x472_1-3-product-tile-desktop_gaqfq5.jpg"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e366c"
+  },
+      "title": "Chicken Selects",
+      "price": 4.99,
+      "ingredients": ["Breaded chicken strips", "Served with dipping sauce"],
+        "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876122/mcdonalds-Chicken-Selects-3-pieces-2_1-3-product-tile-desktop_anpukv.jpg"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e366d"
+  },
+      "title": "Hotcakes",
+      "price": 3.49,
+      "ingredients": ["Fluffy pancakes", "Butter", "Syrup"],
+        "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684876034/american-hotcakes-98829-1_iw5nfc.webp"
+    },
+    {
+          "_id": {
+    "$oid": "640c2dd963a319ea671e366e"
+  },
+      "title": "McWrap",
+      "price": 4.99,
+      "ingredients": ["Grilled chicken", "Lettuce", "Tomato", "Cheese", "Ranch sauce", "Flour tortilla"],
+        "shop": "McDonalds",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684875924/350367-mcwrap-2022-na-www-1090x664px-7-mcwrap-klasyczny_y0bblb.png"
+    },
+     {
+      "title": "Original Recipe Chicken",
+      "price": 5.99,
+      "ingredients": ["Fresh chicken", "Secret blend of 11 herbs and spices"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684878730/KFC-Original-Recipe-Chicken-S_lobdsk.jpg",
+      "shop": "KFC"
+    },
+    {
+      "title": "Zinger Burger",
+      "price": 4.49,
+      "ingredients": ["Crispy chicken fillet", "Lettuce", "Mayonnaise", "Sesame seed bun"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684878632/Zinger_Burger_aihzn7.png",
+      "shop": "KFC"
+    },
+    {
+      "title": "Popcorn Chicken",
+      "price": 3.99,
+      "ingredients": ["Bite-sized chicken pieces", "Crispy coating"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684878577/popcorn-chicken-1586187101_kmxqxl.jpg",
+      "shop": "KFC"
+    },
+    {
+      "title": "Twister Wrap",
+      "price": 4.79,
+      "ingredients": ["Grilled chicken", "Lettuce", "Tomato", "Mayonnaise", "Flour tortilla"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684878540/KazoPoranuNrDDA-800x450-noPad_i293jz.webp",
+      "shop": "KFC"
+    },
+    {
+      "title": "Mashed Potatoes",
+      "price": 2.49,
+      "ingredients": ["Fluffy mashed potatoes", "Gravy"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684878476/maxresdefault_1_knf1e6.jpg",
+      "shop": "KFC"
+    },
+    {
+      "title": "Chicken Tenders",
+      "price": 4.99,
+      "ingredients": ["Tender chicken strips", "Crispy coating", "Dipping sauce"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684878396/maxresdefault_iakrbo.jpg",
+      "shop": "KFC"
+    },
+    {
+      "title": "Coleslaw",
+      "price": 1.99,
+      "ingredients": ["Shredded cabbage", "Carrots", "Creamy dressing"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684878338/main-qimg-d617742ea38a65c1dc13ec43b4d9ec62-lq_moc0l9.jpg",
+      "shop": "KFC"
+    },
+    {
+      "title": "Famous Bowl",
+      "price": 5.49,
+      "ingredients": ["Mashed potatoes", "Corn", "Crispy chicken", "Gravy", "Cheese"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684878294/60b8179921004f267a48bfdf_KFC_Website_ProductPhotos_BowlPechuga_n1fgbs.png",
+      "shop": "KFC"
+    },
+    {
+      "title": "Hot Wings",
+      "price": 3.99,
+      "ingredients": ["Spicy chicken wings", "Crispy coating"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684878208/D-K303_yajdhy.jpg",
+      "shop": "KFC"
+    },
+    {
+      "title": "Chicken Pot Pie",
+      "price": 5,
+      "ingredients": ["Tender chicken", "Mixed vegetables", "Creamy sauce", "Flaky crust"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684878159/UZEAXX6HQ5HTBFBU6ZDUD7SYRM_d6vb5z.avif",
+      "shop": "KFC"
+    },
+    {
+      "title": "Mac and Cheese",
+      "price": 2.99,
+      "ingredients": ["Elbow macaroni", "Creamy cheese sauce"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684878049/kfc-us-introduces-mac-cheese-bowls-the-fan-favorite-side-dish-is-now-a-main-meal_acadl7.jpg",
+            "shop": "KFC"
+    },
+    {
+      "title": "Krusher",
+      "price": 3.49,
+      "ingredients": ["Blended ice", "Fruit syrup", "Optional toppings"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684877950/Oreo-Krusher_sdmphq.jpg",
+      "shop": "KFC"
+    },
+    {
+      "title": "BBQ Wings",
+      "price": 4.99,
+      "ingredients": ["Grilled chicken wings", "BBQ sauce"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684877870/kfc-honey-bbq-wings-copycat-recipe-01_uyvice.jpg",
+      "shop": "KFC"
+    },
+    {
+      "title": "Corn on the Cob",
+      "price": 1.49,
+      "ingredients": ["Fresh corn", "Butter", "Seasonings"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684877814/1670411042534-image_qak799.jpg",
+      "shop": "KFC"
+    },
+    {
+      "title": "Chicken Caesar Salad",
+      "price": 5.99,
+      "ingredients": ["Grilled chicken", "Romaine lettuce", "Parmesan cheese", "Caesar dressing", "Croutons"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684877742/caesar-salad-kfc-chicken-hamburger-restaurant-png-favpng-n9XyyUkFca9KZ7AbFbA6qrGae_xmgqmw.jpg",
+      "shop": "KFC"
+    },
+      {
+      "title": "Pepperoni Pizza",
+      "price": 9.99,
+      "ingredients": ["Pepperoni", "Mozzarella cheese", "Pizza sauce", "Thin crust"],
+      "img_url": "https://example.com/pepperoni_pizza.jpg",
+      "shop": "Dominos"
+    },
+    {
+      "title": "Margherita Pizza",
+      "price": 8.99,
+      "ingredients": ["Fresh basil", "Mozzarella cheese", "Pizza sauce", "Thin crust"],
+      "img_url": "https://example.com/margherita_pizza.jpg",
+      "shop": "Dominos"
+    },
+    {
+      "title": "Hawaiian Pizza",
+      "price": 10.99,
+      "ingredients": ["Ham", "Pineapple", "Mozzarella cheese", "Pizza sauce", "Thin crust"],
+      "img_url": "https://example.com/hawaiian_pizza.jpg",
+      "shop": "Dominos"
+    },
+    {
+      "title": "Supreme Pizza",
+      "price": 12.99,
+      "ingredients": ["Pepperoni", "Sausage", "Bell peppers", "Onions", "Black olives", "Mozzarella cheese", "Pizza sauce", "Thin crust"],
+      "img_url": "https://example.com/supreme_pizza.jpg",
+      "shop": "Dominos"
+    },
+    {
+      "title": "BBQ Chicken Pizza",
+      "price": 11.99,
+      "ingredients": ["Grilled chicken", "BBQ sauce", "Red onions", "Mozzarella cheese", "Thin crust"],
+      "img_url": "https://example.com/bbq_chicken_pizza.jpg",
+      "shop": "Dominos"
+    },
+    {
+      "title": "Veggie Pizza",
+      "price": 10.99,
+      "ingredients": ["Mushrooms", "Bell peppers", "Red onions", "Black olives", "Tomatoes", "Mozzarella cheese", "Pizza sauce", "Thin crust"],
+      "img_url": "https://example.com/veggie_pizza.jpg",
+      "shop": "Dominos"
+    },
+    {
+      "title": "Chicken Alfredo Pasta",
+      "price": 9.99,
+      "ingredients": ["Grilled chicken", "Alfredo sauce", "Penne pasta", "Parmesan cheese"],
+      "img_url": "https://example.com/chicken_alfredo_pasta.jpg",
+      "shop": "Dominos"
+    },
+    {
+      "title": "Garlic Breadsticks",
+      "price": 4.99,
+      "ingredients": ["Freshly baked breadsticks", "Garlic butter", "Parmesan cheese", "Marinara sauce"],
+      "img_url": "https://example.com/garlic_breadsticks.jpg",
+      "shop": "Dominos"
+    },
+    {
+      "title": "Chocolate Lava Cake",
+      "price": 3.99,
+      "ingredients": ["Moist chocolate cake", "Molten chocolate center"],
+      "img_url": "https://example.com/chocolate_lava_cake.jpg",
+      "shop": "Dominos"
+    },
+    {
+      "title": "Chicken Wings",
+      "price": 8.99,
+        "ingredients": ["Chicken wings", "Choice of sauce"],
+      "img_url": "https://example.com/chicken_wings.jpg",
+      "shop": "Dominos"
+    }
+]
