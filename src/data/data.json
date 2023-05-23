@@ -286,70 +286,196 @@
       "title": "Pepperoni Pizza",
       "price": 9.99,
       "ingredients": ["Pepperoni", "Mozzarella cheese", "Pizza sauce", "Thin crust"],
-      "img_url": "https://example.com/pepperoni_pizza.jpg",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684880884/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2019__09__easy-pepperoni-pizza-lead-4-82c60893fcad4ade906a8a9f59b8da9d_vfipxo.jpg",
       "shop": "Dominos"
     },
     {
       "title": "Margherita Pizza",
       "price": 8.99,
       "ingredients": ["Fresh basil", "Mozzarella cheese", "Pizza sauce", "Thin crust"],
-      "img_url": "https://example.com/margherita_pizza.jpg",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684880845/20220211142347-margherita-9920_ba86be55-674e-4f35-8094-2067ab41a671_iymlep.webp",
       "shop": "Dominos"
     },
     {
       "title": "Hawaiian Pizza",
       "price": 10.99,
       "ingredients": ["Ham", "Pineapple", "Mozzarella cheese", "Pizza sauce", "Thin crust"],
-      "img_url": "https://example.com/hawaiian_pizza.jpg",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684880802/hawaiian-pizza-ddmfs-3x2-132-450eff04ad924d9a9eae98ca44e3f988_lrav1d.jpg",
       "shop": "Dominos"
     },
     {
       "title": "Supreme Pizza",
       "price": 12.99,
       "ingredients": ["Pepperoni", "Sausage", "Bell peppers", "Onions", "Black olives", "Mozzarella cheese", "Pizza sauce", "Thin crust"],
-      "img_url": "https://example.com/supreme_pizza.jpg",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684880750/supreme-pizza-toppings_rb5c33.webp",
       "shop": "Dominos"
     },
     {
       "title": "BBQ Chicken Pizza",
       "price": 11.99,
       "ingredients": ["Grilled chicken", "BBQ sauce", "Red onions", "Mozzarella cheese", "Thin crust"],
-      "img_url": "https://example.com/bbq_chicken_pizza.jpg",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684880698/1382541346030_u2j7yn.jpg",
       "shop": "Dominos"
     },
     {
       "title": "Veggie Pizza",
       "price": 10.99,
       "ingredients": ["Mushrooms", "Bell peppers", "Red onions", "Black olives", "Tomatoes", "Mozzarella cheese", "Pizza sauce", "Thin crust"],
-      "img_url": "https://example.com/veggie_pizza.jpg",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684880640/vegetarian-pizza_p7ioxv.jpg",
       "shop": "Dominos"
     },
     {
       "title": "Chicken Alfredo Pasta",
       "price": 9.99,
       "ingredients": ["Grilled chicken", "Alfredo sauce", "Penne pasta", "Parmesan cheese"],
-      "img_url": "https://example.com/chicken_alfredo_pasta.jpg",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684880603/Rich-Chicken-Alfredo-Pizza_exps165518_THCA2916394C11_08_6b_2__RMS_qbr0p9.jpg",
       "shop": "Dominos"
     },
     {
       "title": "Garlic Breadsticks",
       "price": 4.99,
       "ingredients": ["Freshly baked breadsticks", "Garlic butter", "Parmesan cheese", "Marinara sauce"],
-      "img_url": "https://example.com/garlic_breadsticks.jpg",
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684880509/Dominos-Style-Garlic-Breadsticks-4-500x500_w3ltmn.jpg",
       "shop": "Dominos"
     },
     {
-      "title": "Chocolate Lava Cake",
-      "price": 3.99,
-      "ingredients": ["Moist chocolate cake", "Molten chocolate center"],
-      "img_url": "https://example.com/chocolate_lava_cake.jpg",
-      "shop": "Dominos"
-    },
-    {
-      "title": "Chicken Wings",
+      "title": "Classic Caesar Salad",
       "price": 8.99,
-        "ingredients": ["Chicken wings", "Choice of sauce"],
-      "img_url": "https://example.com/chicken_wings.jpg",
-      "shop": "Dominos"
+      "ingredients": ["Romaine lettuce", "Parmesan cheese", "Croutons", "Caesar dressing"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684881564/0328-ceasar-salad-lede_xsaidj.webp",
+      "shop": "Salateria"
+    },
+    {
+      "title": "Greek Salad",
+      "price": 9.99,
+      "ingredients": ["Mixed greens", "Feta cheese", "Kalamata olives", "Tomatoes", "Cucumbers", "Red onions", "Greek dressing"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684881526/greek-salad-index-642f292397bbf_oomfbs.jpg",
+      "shop": "Salateria"
+    },
+    {
+      "title": "Mediterranean Salad",
+      "price": 10.99,
+      "ingredients": ["Mixed greens", "Grilled chicken", "Roasted red peppers", "Kalamata olives", "Feta cheese", "Red onions", "Greek dressing"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684881493/mediterranean-salad_djob7e.jpg",
+      "shop": "Salateria"
+    },
+    {
+      "title": "Spinach Salad",
+      "price": 9.99,
+      "ingredients": ["Fresh spinach", "Strawberries", "Goat cheese", "Candied pecans", "Balsamic vinaigrette"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684881445/k_archive_550b6ad43de0333c33fb10d0aa29b96f5c09a1e8_xpkdic.jpg",
+      "shop": "Salateria"
+    },
+    {
+      "title": "Caprese Panini",
+      "price": 9.99,
+      "ingredients": ["Tomatoes", "Fresh mozzarella cheese", "Basil", "Balsamic glaze", "Ciabatta bread"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684881389/Vegan-Caprese-Panini-1_fyea1a.jpg",
+      "shop": "Salateria"
+    },
+    {
+      "title": "Turkey Avocado Wrap",
+      "price": 10.99,
+      "ingredients": ["Sliced turkey", "Avocado", "Lettuce", "Tomatoes", "Cucumbers", "Honey mustard dressing", "Whole wheat wrap"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684881324/Turkey-Wrap2_vngmjb.jpg",
+      "shop": "Salateria"
+    },
+    {
+      "title": "Quinoa Bowl",
+      "price": 11.99,
+      "ingredients": ["Mixed greens", "Quinoa", "Grilled chicken", "Cherry tomatoes", "Cucumbers", "Red onions", "Lemon vinaigrette"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684881285/Quinoa-Bowl-7_eij7dm.jpg",
+      "shop": "Salateria"
+    },
+    {
+      "title": "Roasted Vegetable Panini",
+      "price": 9.99,
+      "ingredients": ["Assorted roasted vegetables", "Goat cheese", "Pesto", "Ciabatta bread"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684881248/roasted-vegetable-panini-109563-1_cn3uhm.jpg",
+      "shop": "Salateria"
+    },
+    {
+      "title": "Fresh Fruit Salad",
+      "price": 7.99,
+      "ingredients": ["Assorted fresh fruits"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684881197/4518422-8b9bac307f7a4d7fb4379b8c647b806d_s4vnsy.jpg",
+      "shop": "Salateria"
+    },
+    {
+    "title": "Kapsalon",
+     "price": 4.99,
+      "ingredients": ["French fries", "Lettuce or mixed greens", "Sliced tomatoes", "Sliced cucumbers"],
+      "img_url": "https://www.themealdb.com/images/media/meals/sxysrt1468240488.jpg",
+      "shop": "Salateria"
+    },
+     {
+      "title": "California Roll",
+      "price": 8.99,
+      "ingredients": ["Imitation crab", "Avocado", "Cucumber", "Sushi rice", "Nori seaweed"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684881899/california-roll_e7njol.jpg",
+      "shop": "Sushi Ninja"
+    },
+    {
+      "title": "Spicy Tuna Roll",
+      "price": 9.99,
+      "ingredients": ["Tuna", "Spicy mayo", "Sushi rice", "Nori seaweed"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684881955/hero-img-recipe-spicy-tuna-3db6e125056f2bde01321a3da5d290da_ccenp7.jpg",
+      "shop": "Sushi Ninja"
+    },
+    {
+      "title": "Salmon Nigiri",
+      "price": 4.99,
+      "ingredients": ["Fresh salmon", "Sushi rice"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684881989/Salmon-Nigiri-thumbnail-500x375_lomefb.jpg",
+      "shop": "Sushi Ninja"
+    },
+    {
+      "title": "Shrimp Tempura Roll",
+      "price": 10.99,
+      "ingredients": ["Shrimp tempura", "Avocado", "Cucumber", "Sushi rice", "Nori seaweed"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684882023/shrimp-tempura-roll-004_kpgogo.webp",
+      "shop": "Sushi Ninja"
+    },
+    {
+      "title": "Vegetable Udon",
+      "price": 11.99,
+      "ingredients": ["Thick wheat noodles", "Assorted vegetables", "Udon broth"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684882060/yaki-udon-19d4efb_hfavhf.webp",
+      "shop": "Sushi Ninja"
+    },
+    {
+      "title": "Rainbow Roll",
+      "price": 12.99,
+      "ingredients": ["Assorted fish (tuna, salmon, yellowtail)", "Avocado", "Cucumber", "Sushi rice", "Nori seaweed"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684882112/Rainbow-Roll-1_vc9rx8.jpg",
+      "shop": "Sushi Ninja"
+    },
+    {
+      "title": "Eel Nigiri",
+      "price": 5.99,
+      "ingredients": ["Grilled eel", "Eel sauce", "Sushi rice"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684882160/SN-Eel-Nigiri-scaled_hwmfmh.jpg",
+      "shop": "Sushi Ninja"
+    },
+    {
+      "title": "Miso Soup",
+      "price": 2.99,
+      "ingredients": ["Soybean paste", "Tofu", "Seaweed", "Scallions"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684882256/Miso_Soup_001_inq4hv.jpg",
+      "shop": "Sushi Ninja"
+    },
+    {
+      "title": "Sashimi Platter",
+      "price": 24.99,
+      "ingredients": ["Assorted fresh fish slices (tuna, salmon, yellowtail)"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684882300/PARTY_TRAY_UTAGE_imugti.webp",
+      "shop": "Sushi Ninja"
+    },
+        {
+      "title": "Dragon Roll",
+      "price": 13.99,
+      "ingredients": ["Grilled eel", "Avocado", "Cucumber", "Sushi rice", "Nori seaweed", "Eel sauce"],
+      "img_url": "https://res.cloudinary.com/dxs7prlcr/image/upload/v1684882404/Dragon-Roll-FT-RECIPE0223-5e3d0283beee4921980ad7b5597d85a9_znb2dy.jpg",
+      "shop": "Sushi Ninja"
     }
 ]
