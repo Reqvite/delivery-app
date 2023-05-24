@@ -1,12 +1,27 @@
 .ProductsListItem {
   width: 300px;
-  height: 350px;
+  height: 360px;
+  border-radius: 5px;
+  box-shadow: rgb(0 0 0 / 35%) 0 5px 15px;
+  font-weight: var(--font-weight-bolder);
 }
 
 .img {
   height: 250px;
   border-radius: 5px;
   object-fit: cover;
+}
+
+.dataBox {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 10px;
+  margin-top: auto;
+}
+
+.title {
+  font-size: 18px;
 }
 
 .buttonBox {

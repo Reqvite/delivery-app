@@ -1,0 +1,86 @@
+.CartListItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  &:not(:first-child) {
+    margin-top: 10px;
+  }
+}
+
+.img {
+  width: 100%;
+  max-width: 150px;
+  height: 150px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.title {
+  width: 100%;
+  max-width: 100px;
+  font-size: 16px;
+}
+
+.price {
+  width: 100px;
+}
+
+.buttonBox {
+  margin-top: 15px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition-property: color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+
+  &:hover,
+  &:focus {
+    color: var(--accent-color);
+  }
+}
+
+.inputBox {
+  height: 50px;
+  border: 2px solid var(--accent-color);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  text-align: center;
+  width: 50px;
+  border: none;
+  outline: none;
+}
+
+.inputAddButton {
+  padding: 10px;
+  transition-property: color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+
+  &:hover,
+  &:focus {
+    color: var(--green-light-color);
+  }
+}
+
+.inputRemoveButton {
+  padding: 10px;
+  transition-property: color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+
+  &:hover,
+  &:focus {
+    color: var(--red-light-color);
+  }
+}

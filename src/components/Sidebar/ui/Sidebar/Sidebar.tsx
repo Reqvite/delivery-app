@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import { CategoriesList } from '../CategoriesList/CategoriesList';
 import cls from './SideBar.module.scss';
 import { classNames } from '~/shared/lib/classNames';
@@ -7,6 +8,11 @@ interface SideBarProps {
 }
 
 export const Sidebar = ({ className = '' }: SideBarProps) => {
+    const { pathname } = useLocation()
+
+    if (pathname !== '/') {
+        return null;
+    }
     return (
         <div
             className={classNames(cls.Sidebar, {}, [

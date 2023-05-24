@@ -4,7 +4,9 @@ export interface Food {
     price: number,
     ingredients: string[],
     img_url: string,
-    shop: string
+    shop: string,
+    quantity?: number;
+    totalPrice?: number;
 }
 
 export interface CategoriesSchema {

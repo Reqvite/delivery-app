@@ -3,7 +3,6 @@ import { ProductsListItem } from "../ProductsListItem/ProductsListItem";
 import { selectListOfFood } from "~/redux/categories/selectors";
 import { useSelector } from "react-redux";
 
-
 export const ProductsList = () => {
   const foodList = useSelector(selectListOfFood)
 

@@ -6,6 +6,9 @@
 
   // fonts
   --font-family-main: "Montserrat", sans-serif, "Times New Roman", serif;
+  --font-size-s: 12px;
+  --font-line-s: 14px;
+  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
   --font-size-m: 16px;
   --font-line-m: 24px;
   --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
@@ -24,9 +27,11 @@
   --bg-color: #fff;
   --primary-color: #000;
   --secondary-color: #4e5055;
-  --white-color: #fff;
   --accent-color: rgb(144 144 194 / 70%);
   --active-color: #9090f0;
+  --red-light-color: #d74136;
+  --green-light-color: #72cd41;
+  --card-bg-color: #e7e7f0;
 
   // animations
   --transition-duration: 500ms;

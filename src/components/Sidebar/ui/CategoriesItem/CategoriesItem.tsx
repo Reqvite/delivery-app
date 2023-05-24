@@ -13,13 +13,13 @@ interface CategoryListItemProps {
 export const CategoriesItem: FC<CategoryListItemProps> = ({ category }) => {
 
     const dispatch = useDispatch<AppDispatch>()
-    const handleButtonClick = (categoryName: string) => {
+    const handleCategoryButton = (categoryName: string) => {
         dispatch(getCategoryFood(categoryName))
     }
 
     return (
         <li className={classNames(cls.ProductsListItem, {}, [])}>
-            <Button variant={ButtonVariant.BACKGROUND} onClick={() => handleButtonClick(category)}>
+            <Button variant={ButtonVariant.BACKGROUND} onClick={() => handleCategoryButton(category)}>
                 {category}
             </Button>
         </li>
