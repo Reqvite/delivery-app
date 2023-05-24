@@ -1,10 +1,21 @@
 import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import { useFormik } from 'formik';
 import cls from "./CartListForm.module.scss"
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
+import { addUserOrder } from "~/redux/user/operations";
+import { selectDeliveryList, selectTotalPrice, selectUserIsLoading } from "~/redux/user/selectors";
+import { Loader } from "~/shared/ui/Loader/Loader";
 
 export const CartListForm = () => {
+    const dispatch = useDispatch<AppDispatch>()
+
+    const foodList = useSelector(selectDeliveryList)
+    const total = useSelector(selectTotalPrice)
+    const isLoading = useSelector(selectUserIsLoading)
 
     const formik = useFormik({
+
         initialValues: {
             name: '',
             email: '',
@@ -12,7 +23,7 @@ export const CartListForm = () => {
             address: ''
         },
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            dispatch(addUserOrder({ foodList, ...values }))
         },
     });
 
@@ -34,7 +45,7 @@ export const CartListForm = () => {
                 </label>
                 <label className={cls.label} htmlFor="phone">
                     Phone
-                    <input name="phone" className={cls.input} type="number" required onChange={formik.handleChange}
+                    <input name="phone" className={cls.input} type="text" required onChange={formik.handleChange}
                         value={formik.values.phone} />
                     <p className={cls.text}>We’ll send order updates to this number.</p>
                 </label>
@@ -43,7 +54,12 @@ export const CartListForm = () => {
                     <input name="address" className={cls.input} type="text" required onChange={formik.handleChange}
                         value={formik.values.address} />
                 </label>
-                <Button type="submit" variant={ButtonVariant.BACKGROUND} className={cls.btn}>Confirm the order</Button>
+                <div className={cls.btnBox}>
+                    <span className={cls.price}>Total Price: $ {total.toFixed(2)}</span>
+                    <Button type="submit" variant={ButtonVariant.BACKGROUND} className={cls.btn} disabled={isLoading}>
+                        {isLoading ? <Loader width={20} height={20} className={cls.loader} color="#000" /> : "Confirm the order"}
+                    </Button>
+                </div>
             </form >
         </div>
     );

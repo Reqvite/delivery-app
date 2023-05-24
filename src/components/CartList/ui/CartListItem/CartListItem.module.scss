@@ -21,6 +21,7 @@
     width: 70px;
     height: 70px;
   }
+
   @media screen and (width >= 1160.98px) {
     width: 150px;
     height: 150px;
@@ -36,9 +37,9 @@
 }
 
 .price {
-  font-weight: var(--font-weight-bold);
-  margin-left: 5px;
   width: 100px;
+  margin-left: 5px;
+  font-weight: var(--font-weight-bold);
 }
 
 .buttonBox {
@@ -61,9 +62,9 @@
 
 .inputBox {
   display: flex;
-  margin-left: 10px;
   align-items: center;
   height: 50px;
+  margin-left: 10px;
   border: 2px solid var(--accent-color);
   border-radius: 5px;
 }

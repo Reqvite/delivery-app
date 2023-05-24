@@ -1,8 +1,8 @@
 .formBox {
-  margin-top: 25px;
   width: 100%;
-  min-width: 250px;
   max-width: 800px;
+  min-width: 250px;
+  margin-top: 25px;
 
   @media screen and (width >= 860px) {
     margin-top: 0;
@@ -43,9 +43,21 @@
   font: var(--font-s);
 }
 
+.btnBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.price {
+  font-weight: var(--font-weight-bold);
+}
 .btn {
   width: 200px;
-  margin-top: 40px;
-  margin-right: auto;
-  margin-left: auto;
+}
+
+.loader {
+  width: 100%;
+  height: 100%;
 }

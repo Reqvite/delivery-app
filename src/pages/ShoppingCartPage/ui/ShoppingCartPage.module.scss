@@ -3,7 +3,7 @@
   flex-direction: column-reverse;
 
   @media screen and (width >= 860px) {
-    flex-direction: row;
     justify-content: space-between;
+    flex-direction: row;
   }
 }

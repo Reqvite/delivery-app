@@ -2,11 +2,19 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UserDataSchema } from './types';
 import { Food } from '../categories/types';
 import { toast } from 'react-hot-toast';
+import { addUserOrder } from './operations';
 
+const calculateTotalPrice = (deliveryList: Food[]) => {
+    return deliveryList.reduce((total, food) => {
+        const price = total + (food.price * food.quantity!)
+        return price;
+    }, 0);
+};
 
 const initialState: UserDataSchema = {
     deliveryList: [],
-
+    isLoading: false,
+    totalPrice: 0,
 };
 
 export const userSlice = createSlice({
@@ -25,11 +33,13 @@ export const userSlice = createSlice({
                 const updatedProduct = { quantity: 1, totalPrice: action.payload.price, ...action.payload }
                 state.deliveryList.push(updatedProduct);
             }
+            state.totalPrice = calculateTotalPrice(state.deliveryList);
             toast.success(`${action.payload?.title} added to cart.`);
         },
         deleteFoodFromList: (state, action: PayloadAction<string>) => {
             const idx = state.deliveryList.findIndex(food => food._id === action.payload)
             state.deliveryList.splice(idx, 1)
+            state.totalPrice = calculateTotalPrice(state.deliveryList);
         },
         addQuantity: (state, action: PayloadAction<string>) => {
             const [existingFood] = state.deliveryList.filter((item) => item._id === action.payload);
@@ -37,6 +47,7 @@ export const userSlice = createSlice({
                 existingFood.quantity += 1;
                 existingFood.totalPrice = existingFood.price * existingFood.quantity;
             }
+            state.totalPrice = calculateTotalPrice(state.deliveryList);
         },
         removeQuantity: (state, action: PayloadAction<string>) => {
             const [existingFood] = state.deliveryList.filter((item) => item._id === action.payload);
@@ -47,6 +58,7 @@ export const userSlice = createSlice({
                 existingFood.quantity -= 1;
                 existingFood.totalPrice = existingFood.price * existingFood.quantity;
             }
+            state.totalPrice = calculateTotalPrice(state.deliveryList);
         },
         updateQuantityFromInput: (state, action: PayloadAction<{ _id: string, quantity: number }>) => {
             const [existingFood] = state.deliveryList.filter((item) => item._id === action.payload._id);
@@ -59,22 +71,25 @@ export const userSlice = createSlice({
                 }
                 existingFood.totalPrice = existingFood.price * existingFood.quantity;
             }
+            state.totalPrice = calculateTotalPrice(state.deliveryList);
         },
-        // extraReducers: (builder) => {
-        //     builder
-        //         .addCase(loginByUsername.pending, (state) => {
-        //             state.error = undefined;
-        //             state.isLoading = true;
-        //         })
-        //         .addCase(loginByUsername.fulfilled, (state, action) => {
-        //             state.isLoading = false;
-        //         })
-        //         .addCase(loginByUsername.rejected, (state, action) => {
-        //             state.isLoading = false;
-        //             state.error = action.payload;
-        //         });
-        // },
-    }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(addUserOrder.pending, (state) => {
+                state.error = undefined;
+                state.isLoading = true;
+            })
+            .addCase(addUserOrder.fulfilled, (state, action) => {
+                state.isLoading = false;
+                toast.success(`Thank you for your order, our manager will contact you soon.`);
+            })
+            .addCase(addUserOrder.rejected, (state, action: any) => {
+                state.isLoading = false;
+                state.error = action.payload;
+                toast.error(action.payload);
+            });
+    },
 });
 
 export const { actions: userActions } = userSlice;

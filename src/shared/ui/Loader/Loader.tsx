@@ -6,15 +6,17 @@ interface LoaderProps {
 	className?: string;
 	color?: string;
 	secondaryColor?: string;
+	width?: number;
+	height?: number
 }
 
-export const Loader = ({ className }: LoaderProps) => {
+export const Loader = ({ className, width = 80, height = 80, color = 'rgb(144 144 194 / 70%)' }: LoaderProps) => {
 	return (
 		<div className={classNames(cls.Loader, {}, [className])}>
 			<Oval
-				height={80}
-				width={80}
-				color="rgb(144 144 194 / 70%)"
+				height={height}
+				width={width}
+				color={color}
 				wrapperStyle={{}}
 				wrapperClass=""
 				visible={true}
@@ -22,7 +24,6 @@ export const Loader = ({ className }: LoaderProps) => {
 				secondaryColor="rgb(144 144 194 / 70%)"
 				strokeWidth={2}
 				strokeWidthSecondary={2}
-
 			/>
 		</div>
 	);
