@@ -1,7 +1,9 @@
+import { ProductsList } from "~/components/ProductsList";
+
 const MainPage = () => {
     return <div>
-        main page
-	</div>;
+        <ProductsList />
+    </div>;
 };
 
 export default MainPage;

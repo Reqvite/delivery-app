@@ -6,7 +6,7 @@ interface SideBarProps {
     className?: string;
 }
 
-export const SideBar = ({ className = '' }: SideBarProps) => {
+export const Sidebar = ({ className = '' }: SideBarProps) => {
     return (
         <div
             className={classNames(cls.Sidebar, {}, [

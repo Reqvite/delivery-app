@@ -1,6 +1,7 @@
 .Button {
   padding: 8px 17px;
   color: var(--primary-color);
+  font-weight: var(--font-weight-bold);
   cursor: pointer;
 }
 
@@ -20,14 +21,14 @@
   border: none;
   border-radius: 8px;
   background-color: var(--accent-color);
-  color: var(--white-color);
+  color: var(--primary-color);
   transform: scale(1);
-  transition-property: background-color;
+  transition-property: transform;
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-timing-function);
 
   &:hover,
   &:focus {
-    background-color: var(--active-color);
+    transform: var(--scale);
   }
 }
