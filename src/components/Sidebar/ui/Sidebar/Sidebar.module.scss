@@ -1,9 +1,16 @@
 .Sidebar {
+  position: fixed;
   display: flex;
   flex-direction: column;
   width: var(--sidebar-width);
   height: calc(100vh - var(--navbar-height));
   transition: width 0.3s;
+}
+
+.box {
+  width: 100%;
+  min-width: 150px;
+  max-width: 200px;
 }
 
 .title {

@@ -8,6 +8,7 @@ import { AppDispatch } from './providers/StoreProvider/config/config';
 import { MAIN_PAGE_FOOD } from '~/shared/const/const';
 import { getCategoryFood } from '~/redux/categories/operations';
 import { Toaster } from 'react-hot-toast';
+import { Footer } from '~/components/Footer';
 
 const App = () => {
 
@@ -27,6 +28,7 @@ const App = () => {
         </main>
       </Suspense>
       <Toaster />
+      <Footer />
     </div>
   );
 }

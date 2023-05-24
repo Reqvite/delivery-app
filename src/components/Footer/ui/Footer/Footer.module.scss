@@ -1,0 +1,23 @@
+.Footer {
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: var(--footer-height);
+}
+
+.list {
+  display: flex;
+  gap: 10px;
+}
+
+.link {
+  transition-property: color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  &:hover,
+  &:focus {
+    color: var(--accent-color);
+  }
+}

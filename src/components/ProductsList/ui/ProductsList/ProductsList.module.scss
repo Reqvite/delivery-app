@@ -1,6 +1,14 @@
 .ProductsList {
+  padding: 10px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
+  height: 900px;
+  overflow: scroll;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 }

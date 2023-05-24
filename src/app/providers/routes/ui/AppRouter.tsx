@@ -5,10 +5,10 @@ import { Loader } from "~/shared/ui/Loader/Loader";
 
 const AppRouter = () => {
 	return (
-		<Suspense fallback={<Loader/>}>
+		<Suspense fallback={<Loader />}>
 			<Routes>
-                {Object.values(routeConfig).map(({ path, element }) =>
-                    <Route key={path} path={path} element={<div className="page-wrapper">{element}</div>} />)}
+				{Object.values(routeConfig).map(({ path, element }) =>
+					<Route key={path} path={path} element={<section className="page-wrapper">{element}</section>} />)}
 			</Routes>
 		</Suspense>
 	);

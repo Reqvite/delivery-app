@@ -14,13 +14,17 @@ export const Sidebar = ({ className = '' }: SideBarProps) => {
         return null;
     }
     return (
-        <div
-            className={classNames(cls.Sidebar, {}, [
-                className,
-            ])}
-        >
-            <h1 className={cls.title}>All stores</h1>
-            <CategoriesList />
-        </div>
+        <>
+            <div
+                className={classNames(cls.Sidebar, {}, [
+                    className,
+                ])}
+            >
+                <h1 className={cls.title}>All stores</h1>
+                <CategoriesList />
+            </div>
+            <div className={cls.box} />
+        </>
+
     );
 };

@@ -1,17 +1,16 @@
-
-
 import { Oval } from "react-loader-spinner";
+import cls from './Loader.module.scss'
 import { classNames } from "~/shared/lib/classNames";
 
 interface LoaderProps {
-    className?: string;
-    color?: string;
-    secondaryColor?: string;
+	className?: string;
+	color?: string;
+	secondaryColor?: string;
 }
 
-export const Loader = ({ className = '' }: LoaderProps) => {
+export const Loader = ({ className }: LoaderProps) => {
 	return (
-		<div className={classNames("", {}, [className])}>
+		<div className={classNames(cls.Loader, {}, [className])}>
 			<Oval
 				height={80}
 				width={80}
