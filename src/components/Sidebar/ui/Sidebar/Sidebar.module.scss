@@ -1,8 +1,13 @@
 .Sidebar {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   width: var(--sidebar-width);
   height: calc(100vh - var(--navbar-height));
-  padding: 10px;
   transition: width 0.3s;
+}
+
+.title {
+  font: var(--font-l);
+  font-weight: var(--font-weight-bolder);
+  text-align: left;
 }

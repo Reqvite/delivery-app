@@ -1,19 +1,20 @@
-import { useState } from 'react';
+import { CategoriesList } from '../CategoriesList/CategoriesList';
 import cls from './SideBar.module.scss';
 import { classNames } from '~/shared/lib/classNames';
 
 interface SideBarProps {
-  className?: string;
+    className?: string;
 }
 
-export const SideBar = ({ className = ''}: SideBarProps) => {
+export const SideBar = ({ className = '' }: SideBarProps) => {
     return (
         <div
             className={classNames(cls.Sidebar, {}, [
                 className,
             ])}
         >
-            <h1>All stores</h1>
+            <h1 className={cls.title}>All stores</h1>
+            <CategoriesList />
         </div>
     );
 };

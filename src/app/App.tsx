@@ -2,7 +2,7 @@ import { Suspense} from 'react';
 import { Navbar } from '~/components/Navbar';
 import AppRouter from './providers/routes/ui/AppRouter';
 import  "./styles/index.scss";
-import { SideBar } from '~/components/Sidebar/ui/Sidebar';
+import { SideBar } from '~/components/Sidebar/ui/Sidebar/Sidebar';
 
 const App = () => {
 
