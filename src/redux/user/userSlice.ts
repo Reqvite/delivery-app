@@ -80,7 +80,7 @@ export const userSlice = createSlice({
                 state.error = undefined;
                 state.isLoading = true;
             })
-            .addCase(addUserOrder.fulfilled, (state, action) => {
+            .addCase(addUserOrder.fulfilled, (state) => {
                 state.isLoading = false;
                 toast.success(`Thank you for your order, our manager will contact you soon.`);
             })

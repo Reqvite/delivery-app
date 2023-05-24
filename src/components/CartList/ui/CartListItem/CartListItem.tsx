@@ -18,7 +18,7 @@ export const CartListItem: FC<Food> = (food) => {
         totalPrice
     } = food
 
-    const [inputQuantity, setInputQuantity] = useState<number | undefined>(quantity);
+    const [, setInputQuantity] = useState<number | undefined>(quantity);
     const dispatch = useDispatch<AppDispatch>()
 
 
