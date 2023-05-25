@@ -13,6 +13,7 @@ export const Sidebar = ({ className = '' }: SideBarProps) => {
     if (pathname !== '/') {
         return null;
     }
+
     return (
         <>
             <div
