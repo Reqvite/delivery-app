@@ -88,7 +88,13 @@
     {
       "unspecified": "bottom"
     }
-]
+],
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": ["appearance"]
+      }
+    ]
   },
   "plugins": [
 		"stylelint-order"

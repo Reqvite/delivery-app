@@ -1,26 +1,25 @@
-import { ReducersMapObject, configureStore } from '@reduxjs/toolkit';
-import { StateSchema } from './StateSchema';
+import { ReducersMapObject, configureStore } from "@reduxjs/toolkit";
+import { StateSchema } from "./StateSchema";
 import storage from "redux-persist/lib/storage";
-import { categoriesReducer } from '~/redux/categories/categoriesSlice';
-import { userReducer } from '~/redux/user/userSlice';
-import { persistReducer, persistStore } from 'redux-persist';
+import { categoriesReducer } from "~/redux/categories/categoriesSlice";
+import { userReducer } from "~/redux/user/userSlice";
+import { persistReducer, persistStore } from "redux-persist";
 
 const userPersistConfig = {
-    key: "user",
-    storage,
-    whitelist: ['totalPrice', 'deliveryList']
+  key: "user",
+  storage,
+  whitelist: ["totalPrice", "totalQuantity", "deliveryList"],
 };
 
 const rootReducer: ReducersMapObject<StateSchema> = {
-    categories: categoriesReducer,
-    user: persistReducer(userPersistConfig, userReducer)
-
+  categories: categoriesReducer,
+  user: persistReducer(userPersistConfig, userReducer),
 };
 
 export const store = configureStore({
-    reducer: rootReducer,
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({ serializableCheck: false })
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
 });
 
 export const persistor = persistStore(store);

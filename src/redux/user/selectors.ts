@@ -10,3 +10,5 @@ export const selectActiveCategory = (state: StateSchema) =>
 export const selectUserAddress = (state: StateSchema) => state?.user.address;
 export const selectUserHistory = (state: StateSchema) =>
   state?.user.userHistory;
+export const selectUserTotalQuantity = (state: StateSchema) =>
+  state?.user.totalQuantity;

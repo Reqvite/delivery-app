@@ -37,7 +37,7 @@ export const getUserHistory = createAsyncThunk(
       }
       return response.data.orders;
     } catch (e: any) {
-      return thunkAPI.rejectWithValue(e.response.data.message);
+      return thunkAPI.rejectWithValue(e);
     }
   }
 );

@@ -5,6 +5,7 @@ export interface UserDataSchema {
   userHistory: [];
   isLoading: boolean;
   totalPrice: number;
+  totalQuantity: number;
   error?: unknown;
   activeCategory?: string;
   address: string;

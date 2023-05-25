@@ -74,6 +74,9 @@ export const CartListItem: FC<Food> = (food) => {
           <AiFillMinusCircle size={20} />
         </Button>
         <input
+          type="number"
+          min="1"
+          max={MAX_QUANTITY}
           className={cls.input}
           value={quantity}
           onChange={(e) => handleOnChangeInput(+e.target.value)}

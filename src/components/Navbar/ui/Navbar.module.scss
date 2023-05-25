@@ -12,12 +12,35 @@
   backdrop-filter: blur(10px);
 }
 
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 .list {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
 .item {
+  margin-right: 30px;
+
+  &:last-child {
+    margin-left: auto;
+  }
+}
+
+.cart {
+  margin-left: 10px;
   margin-right: 50px;
+  position: relative;
+}
+
+.quantity {
+  top: -10px;
+  position: absolute;
 }

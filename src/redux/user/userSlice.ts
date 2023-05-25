@@ -3,7 +3,7 @@ import { UserDataSchema } from "./types";
 import { Food } from "../categories/types";
 import { toast } from "react-hot-toast";
 import { addUserOrder, getUserHistory } from "./operations";
-import { calculateTotalPrice } from "~/shared/lib/calculateTotalPrice";
+import { calculateTotalSummary } from "~/shared/lib/calculateTotalSummary";
 import { MAX_QUANTITY } from "~/shared/const/const";
 
 const initialState: UserDataSchema = {
@@ -11,6 +11,7 @@ const initialState: UserDataSchema = {
   userHistory: [],
   isLoading: false,
   totalPrice: 0,
+  totalQuantity: 0,
   activeCategory: "",
   address: "",
 };
@@ -51,7 +52,11 @@ export const userSlice = createSlice({
         state.deliveryList.push(updatedProduct);
       }
 
-      state.totalPrice = calculateTotalPrice(state.deliveryList);
+      const { totalPrice, totalQuantity } = calculateTotalSummary(
+        state.deliveryList
+      );
+      state.totalPrice = totalPrice;
+      state.totalQuantity = totalQuantity;
       toast.success(`${action.payload?.title} added to cart.`);
     },
     deleteFoodFromList: (state, action: PayloadAction<string>) => {
@@ -59,7 +64,11 @@ export const userSlice = createSlice({
         (food) => food._id === action.payload
       );
       state.deliveryList.splice(idx, 1);
-      state.totalPrice = calculateTotalPrice(state.deliveryList);
+      const { totalPrice, totalQuantity } = calculateTotalSummary(
+        state.deliveryList
+      );
+      state.totalPrice = totalPrice;
+      state.totalQuantity = totalQuantity;
     },
     addQuantity: (state, action: PayloadAction<string>) => {
       const [existingFood] = state.deliveryList.filter(
@@ -73,7 +82,11 @@ export const userSlice = createSlice({
       }
 
       calculateQuantity(existingFood);
-      state.totalPrice = calculateTotalPrice(state.deliveryList);
+      const { totalPrice, totalQuantity } = calculateTotalSummary(
+        state.deliveryList
+      );
+      state.totalPrice = totalPrice;
+      state.totalQuantity = totalQuantity;
     },
     removeQuantity: (state, action: PayloadAction<string>) => {
       const [existingFood] = state.deliveryList.filter(
@@ -89,7 +102,11 @@ export const userSlice = createSlice({
         existingFood.totalPrice = existingFood.price * existingFood.quantity;
       }
 
-      state.totalPrice = calculateTotalPrice(state.deliveryList);
+      const { totalPrice, totalQuantity } = calculateTotalSummary(
+        state.deliveryList
+      );
+      state.totalPrice = totalPrice;
+      state.totalQuantity = totalQuantity;
     },
     updateQuantityFromInput: (
       state,
@@ -100,27 +117,31 @@ export const userSlice = createSlice({
       );
 
       if (existingFood.quantity) {
-        if (action.payload.quantity === 0) {
-          existingFood.quantity = 1;
-        } else if (action.payload.quantity >= MAX_QUANTITY) {
-          existingFood.quantity = MAX_QUANTITY;
-        } else {
-          existingFood.quantity = action.payload.quantity;
-        }
+        existingFood.quantity = action.payload.quantity;
         existingFood.totalPrice = existingFood.price * existingFood.quantity;
       }
 
-      state.totalPrice = calculateTotalPrice(state.deliveryList);
+      const { totalPrice, totalQuantity } = calculateTotalSummary(
+        state.deliveryList
+      );
+      state.totalPrice = totalPrice;
+      state.totalQuantity = totalQuantity;
     },
     emptyCart: (state) => {
       state.deliveryList = [];
+      state.totalPrice = 0;
+      state.totalQuantity = 0;
     },
     setAddress: (state, action: PayloadAction<string>) => {
       state.address = action.payload;
     },
     setRepeatOerder: (state, action: PayloadAction<Food[]>) => {
       state.deliveryList = action.payload;
-      state.totalPrice = calculateTotalPrice(action.payload);
+      const { totalPrice, totalQuantity } = calculateTotalSummary(
+        state.deliveryList
+      );
+      state.totalPrice = totalPrice;
+      state.totalQuantity = totalQuantity;
     },
   },
   extraReducers: (builder) => {
