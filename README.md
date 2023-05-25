@@ -10,7 +10,7 @@
 - Redux Toolkit,
 - Axios,
 - Formik,
-- React-hot-toast,
+- React-hot-toast
 
 ## Installation and launch of the project
 
