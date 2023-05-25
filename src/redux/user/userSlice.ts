@@ -7,146 +7,157 @@ import { calculateTotalPrice } from "~/shared/lib/calculateTotalPrice";
 import { MAX_QUANTITY } from "~/shared/const/const";
 
 const initialState: UserDataSchema = {
-    deliveryList: [],
-    userHistory: [],
-    isLoading: false,
-    totalPrice: 0,
-    activeCategory: '',
-    address: ''
+  deliveryList: [],
+  userHistory: [],
+  isLoading: false,
+  totalPrice: 0,
+  activeCategory: "",
+  address: "",
 };
 
 const calculateQuantity = (existingFood: Food) => {
-    if (existingFood.quantity) {
-        existingFood.quantity += 1;
-        existingFood.totalPrice = existingFood.price * existingFood.quantity;
-    }
+  if (existingFood.quantity) {
+    existingFood.quantity += 1;
+    existingFood.totalPrice = existingFood.price * existingFood.quantity;
+  }
 };
 
 export const userSlice = createSlice({
-    name: "user",
-    initialState,
-    reducers: {
-        setActiveCategory: (state, action: PayloadAction<string>) => {
-            state.activeCategory = action.payload
-        },
-        addFoodToList: (state, action: PayloadAction<Food>) => {
-            const [existingFood] = state.deliveryList.filter(
-                (item) => item._id === action.payload._id
-            );
-
-            if (existingFood) {
-                calculateQuantity(existingFood);
-            } else {
-                const updatedProduct = {
-                    quantity: 1,
-                    totalPrice: action.payload.price,
-                    ...action.payload,
-                };
-                state.deliveryList.push(updatedProduct);
-            }
-
-            state.totalPrice = calculateTotalPrice(state.deliveryList);
-            toast.success(`${action.payload?.title} added to cart.`);
-        },
-        deleteFoodFromList: (state, action: PayloadAction<string>) => {
-            const idx = state.deliveryList.findIndex(
-                (food) => food._id === action.payload
-            );
-            state.deliveryList.splice(idx, 1);
-            state.totalPrice = calculateTotalPrice(state.deliveryList);
-        },
-        addQuantity: (state, action: PayloadAction<string>) => {
-            const [existingFood] = state.deliveryList.filter(
-                (item) => item._id === action.payload
-            );
-
-            if (existingFood.quantity) {
-                if (existingFood.quantity >= MAX_QUANTITY) {
-                    return;
-                }
-            }
-
-            calculateQuantity(existingFood);
-            state.totalPrice = calculateTotalPrice(state.deliveryList);
-        },
-        removeQuantity: (state, action: PayloadAction<string>) => {
-            const [existingFood] = state.deliveryList.filter(
-                (item) => item._id === action.payload
-            );
-
-            if (existingFood.quantity === 1) {
-                return;
-            }
-
-            if (existingFood.quantity) {
-                existingFood.quantity -= 1;
-                existingFood.totalPrice = existingFood.price * existingFood.quantity;
-            }
-
-            state.totalPrice = calculateTotalPrice(state.deliveryList);
-        },
-        updateQuantityFromInput: (
-            state,
-            action: PayloadAction<{ _id: string; quantity: number }>
-        ) => {
-            const [existingFood] = state.deliveryList.filter(
-                (item) => item._id === action.payload._id
-            );
-
-            if (existingFood.quantity) {
-                if (action.payload.quantity === 0) {
-                    existingFood.quantity = 1;
-                } else if (action.payload.quantity >= MAX_QUANTITY) {
-                    existingFood.quantity = MAX_QUANTITY;
-                } else {
-                    existingFood.quantity = action.payload.quantity;
-                }
-                existingFood.totalPrice = existingFood.price * existingFood.quantity;
-            }
-
-            state.totalPrice = calculateTotalPrice(state.deliveryList);
-        },
-        emptyCart: (state) => {
-            state.deliveryList = []
-        },
-        setAddress: (state, action: PayloadAction<string>) => {
-            state.address = action.payload
-        },
+  name: "user",
+  initialState,
+  reducers: {
+    setActiveCategory: (state, action: PayloadAction<string>) => {
+      state.activeCategory = action.payload;
     },
-    extraReducers: (builder) => {
-        builder
-            .addCase(addUserOrder.pending, (state) => {
-                state.error = undefined;
-                state.isLoading = true;
-            })
-            .addCase(addUserOrder.fulfilled, (state) => {
-                state.isLoading = false;
-                state.deliveryList = [];
-                state.totalPrice = 0;
-                state.activeCategory = '';
-                state.address = '';
-                toast.success(
-                    `Thank you for your order, our manager will contact you soon.`
-                );
-            })
-            .addCase(addUserOrder.rejected, (state, action: any) => {
-                state.isLoading = false;
-                state.error = action.payload;
-                toast.error(action.payload);
-            }).addCase(getUserHistory.pending, (state) => {
-                state.error = undefined;
-                state.isLoading = true;
-            })
-            .addCase(getUserHistory.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.userHistory = action.payload;
-            })
-            .addCase(getUserHistory.rejected, (state, action: any) => {
-                state.isLoading = false;
-                state.error = action.payload;
-                toast.error(action.payload);
-            });
+    addFoodToList: (state, action: PayloadAction<Food>) => {
+      const [existingFood] = state.deliveryList.filter(
+        (item) => item._id === action.payload._id
+      );
+
+      if (existingFood) {
+        if (existingFood.quantity! >= MAX_QUANTITY) {
+          toast.error(
+            `You cannot add a quantity greater than ${MAX_QUANTITY}.`
+          );
+          return;
+        }
+        calculateQuantity(existingFood);
+      } else {
+        const updatedProduct = {
+          quantity: 1,
+          totalPrice: action.payload.price,
+          ...action.payload,
+        };
+        state.deliveryList.push(updatedProduct);
+      }
+
+      state.totalPrice = calculateTotalPrice(state.deliveryList);
+      toast.success(`${action.payload?.title} added to cart.`);
     },
+    deleteFoodFromList: (state, action: PayloadAction<string>) => {
+      const idx = state.deliveryList.findIndex(
+        (food) => food._id === action.payload
+      );
+      state.deliveryList.splice(idx, 1);
+      state.totalPrice = calculateTotalPrice(state.deliveryList);
+    },
+    addQuantity: (state, action: PayloadAction<string>) => {
+      const [existingFood] = state.deliveryList.filter(
+        (item) => item._id === action.payload
+      );
+
+      if (existingFood.quantity) {
+        if (existingFood.quantity >= MAX_QUANTITY) {
+          return;
+        }
+      }
+
+      calculateQuantity(existingFood);
+      state.totalPrice = calculateTotalPrice(state.deliveryList);
+    },
+    removeQuantity: (state, action: PayloadAction<string>) => {
+      const [existingFood] = state.deliveryList.filter(
+        (item) => item._id === action.payload
+      );
+
+      if (existingFood.quantity === 1) {
+        return;
+      }
+
+      if (existingFood.quantity) {
+        existingFood.quantity -= 1;
+        existingFood.totalPrice = existingFood.price * existingFood.quantity;
+      }
+
+      state.totalPrice = calculateTotalPrice(state.deliveryList);
+    },
+    updateQuantityFromInput: (
+      state,
+      action: PayloadAction<{ _id: string; quantity: number }>
+    ) => {
+      const [existingFood] = state.deliveryList.filter(
+        (item) => item._id === action.payload._id
+      );
+
+      if (existingFood.quantity) {
+        if (action.payload.quantity === 0) {
+          existingFood.quantity = 1;
+        } else if (action.payload.quantity >= MAX_QUANTITY) {
+          existingFood.quantity = MAX_QUANTITY;
+        } else {
+          existingFood.quantity = action.payload.quantity;
+        }
+        existingFood.totalPrice = existingFood.price * existingFood.quantity;
+      }
+
+      state.totalPrice = calculateTotalPrice(state.deliveryList);
+    },
+    emptyCart: (state) => {
+      state.deliveryList = [];
+    },
+    setAddress: (state, action: PayloadAction<string>) => {
+      state.address = action.payload;
+    },
+    setRepeatOerder: (state, action: PayloadAction<Food[]>) => {
+      state.deliveryList = action.payload;
+      state.totalPrice = calculateTotalPrice(action.payload);
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(addUserOrder.pending, (state) => {
+        state.error = undefined;
+        state.isLoading = true;
+      })
+      .addCase(addUserOrder.fulfilled, (state) => {
+        state.isLoading = false;
+        state.deliveryList = [];
+        state.totalPrice = 0;
+        state.activeCategory = "";
+        state.address = "";
+        toast.success(
+          `Thank you for your order, our manager will contact you soon.`
+        );
+      })
+      .addCase(addUserOrder.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        toast.error(action.payload);
+      })
+      .addCase(getUserHistory.pending, (state) => {
+        state.error = undefined;
+        state.isLoading = true;
+      })
+      .addCase(getUserHistory.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userHistory = action.payload;
+      })
+      .addCase(getUserHistory.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        toast.error(action.payload);
+      });
+  },
 });
 
 export const { actions: userActions } = userSlice;
