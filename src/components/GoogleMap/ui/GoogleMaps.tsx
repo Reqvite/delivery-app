@@ -20,7 +20,7 @@ const GoogleMaps = () => {
 
     const { isLoaded } = useLoadScript({
         id: 'google-map-script',
-        googleMapsApiKey: import.meta.env.VITE_API_KEY
+        googleMapsApiKey: import.meta.env.VITE_API_KEY_MAPS
     })
 
     useEffect(() => {
@@ -30,8 +30,8 @@ const GoogleMaps = () => {
                     const { latitude: lat, longitude: lng } = position.coords;
                     getGeoCode(dispacth, setMarkerPosition, lat, lng)
                 },
-                (error) => {
-                    console.log('Error occurred while retrieving current location:', error);
+                (e) => {
+                    console.log('Error occurred while retrieving current location:', e);
                 }
             );
         } else {
