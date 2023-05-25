@@ -6,7 +6,6 @@ import {
   CategoryItemStatus,
 } from "../CategoriesItem/CategoriesItem";
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
-import { getCategories } from "~/redux/categories/operations";
 import { selectCategories } from "~/redux/categories/selectors";
 import { selectDeliveryList } from "~/redux/user/selectors";
 import { userActions } from "~/redux/user/userSlice";
@@ -24,10 +23,6 @@ export const CategoriesList = () => {
       dispatch(userActions.setActiveCategory(deliveryList?.shop));
     }
   }, [deliveryList, dispatch]);
-
-  useEffect(() => {
-    dispatch(getCategories());
-  }, [dispatch]);
 
   const handleCategory = (category: string) => {
     if (activeCategory === "all") {

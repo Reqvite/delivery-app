@@ -14,4 +14,5 @@ export interface CategoriesSchema {
   listOfFood: Food[];
   isLoading: boolean;
   error?: unknown;
+  pageIsLoading?: boolean;
 }

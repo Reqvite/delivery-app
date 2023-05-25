@@ -6,6 +6,7 @@ const initialState: CategoriesSchema = {
   listOfCategories: [],
   listOfFood: [],
   isLoading: false,
+  pageIsLoading: true,
 };
 
 export const categoriesSlice = createSlice({
@@ -16,14 +17,13 @@ export const categoriesSlice = createSlice({
     builder
       .addCase(getCategories.pending, (state) => {
         state.error = undefined;
-        state.isLoading = true;
       })
       .addCase(getCategories.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.pageIsLoading = false;
         state.listOfCategories = action.payload;
       })
       .addCase(getCategories.rejected, (state, action) => {
-        state.isLoading = false;
+        state.pageIsLoading = false;
         state.error = action.payload;
       })
       .addCase(getCategoryFood.pending, (state) => {

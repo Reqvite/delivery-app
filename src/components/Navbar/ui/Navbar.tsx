@@ -8,7 +8,6 @@ import { selectUserTotalQuantity } from "~/redux/user/selectors";
 export const Navbar = () => {
   const totalQuantity = useSelector(selectUserTotalQuantity);
 
-  console.log(totalQuantity);
   return (
     <header className={cls.Navbar}>
       <nav className={cls.nav}>

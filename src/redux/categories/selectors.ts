@@ -6,3 +6,5 @@ export const selectCategoriesIsLoading = (state: StateSchema) =>
   state?.categories.isLoading;
 export const selectListOfFood = (state: StateSchema) =>
   state?.categories.listOfFood;
+export const selectPageIsLoading = (state: StateSchema) =>
+  state?.categories.pageIsLoading;

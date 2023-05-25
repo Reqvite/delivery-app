@@ -8,7 +8,7 @@ import { persistReducer, persistStore } from "redux-persist";
 const userPersistConfig = {
   key: "user",
   storage,
-  whitelist: ["totalPrice", "totalQuantity", "deliveryList"],
+  whitelist: ["totalPrice", "totalQuantity", "deliveryList", "activeCategory"],
 };
 
 const rootReducer: ReducersMapObject<StateSchema> = {
@@ -23,5 +23,4 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
 export type AppDispatch = typeof store.dispatch;
