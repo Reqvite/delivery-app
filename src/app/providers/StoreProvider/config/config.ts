@@ -5,19 +5,16 @@ import { categoriesReducer } from '~/redux/categories/categoriesSlice';
 import { userReducer } from '~/redux/user/userSlice';
 import { persistReducer, persistStore } from 'redux-persist';
 
-
-
-
-
 const userPersistConfig = {
     key: "user",
     storage,
 };
 
 
+
 const rootReducer: ReducersMapObject<StateSchema> = {
     categories: categoriesReducer,
-    user: persistReducer(userPersistConfig, userReducer) as any,
+    user: persistReducer(userPersistConfig, userReducer)
 
 };
 

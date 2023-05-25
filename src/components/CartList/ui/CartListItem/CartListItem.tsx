@@ -6,6 +6,7 @@ import { Food } from "~/redux/categories/types";
 import { AiOutlineClose, AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import { userActions } from "~/redux/user/userSlice";
 import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
+import { MAX_QUANTITY } from "~/shared/const/const";
 
 
 
@@ -40,6 +41,9 @@ export const CartListItem: FC<Food> = (food) => {
         if (value === 0) {
             setInputQuantity(1)
             dispatch(userActions.updateQuantityFromInput({ _id, quantity: 1 }))
+        } else if (value >= MAX_QUANTITY) {
+            setInputQuantity(MAX_QUANTITY)
+            dispatch(userActions.updateQuantityFromInput({ _id, quantity: MAX_QUANTITY }))
         } else {
             setInputQuantity(value)
             dispatch(userActions.updateQuantityFromInput({ _id, quantity: value }))

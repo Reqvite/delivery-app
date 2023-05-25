@@ -6,6 +6,7 @@ import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
 import { addUserOrder } from "~/redux/user/operations";
 import { selectDeliveryList, selectTotalPrice, selectUserIsLoading } from "~/redux/user/selectors";
 import { Loader } from "~/shared/ui/Loader/Loader";
+import { USER_DELIVERY_LIST } from "~/shared/const/const";
 
 export const CartListForm = () => {
     const dispatch = useDispatch<AppDispatch>()
@@ -15,15 +16,16 @@ export const CartListForm = () => {
     const isLoading = useSelector(selectUserIsLoading)
 
     const formik = useFormik({
-
         initialValues: {
             name: '',
             email: '',
             phone: '',
             address: ''
         },
-        onSubmit: values => {
+        onSubmit: (values, { resetForm }) => {
             dispatch(addUserOrder({ foodList, ...values }))
+            localStorage.removeItem(USER_DELIVERY_LIST);
+            resetForm();
         },
     });
 

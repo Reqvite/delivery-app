@@ -2,7 +2,10 @@
 @import "./variables/global";
 
 .app {
-  height: calc(100vh - var(--navbar-height));
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: var(--bg-color);
   color: var(--primary-color);
   font: var(--font-m);

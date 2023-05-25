@@ -6,7 +6,8 @@
   box-shadow: rgb(0 0 0 / 35%) 0 5px 15px;
 
   @media screen and (width >= 860px) {
-    height: 800px;
+    height: auto;
+    max-height: 800px;
     margin-left: 50px;
     overflow: auto;
     overflow-x: hidden;

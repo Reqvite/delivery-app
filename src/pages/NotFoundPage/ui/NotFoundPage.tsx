@@ -1,15 +1,15 @@
-import { classNames } from "~/shared/lib/classNames";
 import cls from "./NotFoundPage.module.scss";
+import { Link } from "react-router-dom";
+import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 
 
-interface NotFoundPageProps {
-  className?: string;
-}
-
-export const NotFoundPage = ({ className = '' }: NotFoundPageProps) => {
+export const NotFoundPage = () => {
 	return (
-		<div className={classNames(cls.NotFoundPage, {}, [className])}>
-			Sorry, page not found.
+		<div className={cls.wrapper}>
+			<div className={cls.NotFoundBox}>
+				<h1>Sorry, page not found.</h1>
+				<Button variant={ButtonVariant.BACKGROUND} className={cls.btn}><Link to="/">Back</Link></Button>
+			</div>
 		</div>
 	);
 };
