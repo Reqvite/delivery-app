@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { CategoriesList } from '../CategoriesList/CategoriesList';
-import cls from './SideBar.module.scss';
+import cls from './Sidebar.module.scss';
 import { classNames } from '~/shared/lib/classNames';
 
 interface SideBarProps {
