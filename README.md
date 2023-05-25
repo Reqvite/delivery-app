@@ -28,13 +28,17 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-### `npm run lint:ts` - This script runs ESLint to check for linting issues in TypeScript and TSX files.
+This script runs ESLint to check for linting issues in TypeScript and TSX files.
+### `npm run lint:ts` 
 
-### `npm run lint:ts:fix` - This script runs ESLint with the --fix flag to automatically fix fixable linting issues in TypeScript and TSX files.
+This script runs ESLint with the --fix flag to automatically fix fixable linting issues in TypeScript and TSX files.
+### `npm run lint:ts:fix` 
 
-### `npm run lint:scss` - This script runs Stylelint to check for linting issues in SCSS files.
+This script runs Stylelint to check for linting issues in SCSS files.
+### `npm run lint:scss` 
 
-### `lint:scss:fix` - This script runs Stylelint with the --fix flag to automatically fix fixable linting issues in SCSS files.
+This script runs Stylelint with the --fix flag to automatically fix fixable linting issues in SCSS files.
+### `lint:scss:fix` 
 
 ### `npm run build`
 Builds the app for production to the `build` folder.\
