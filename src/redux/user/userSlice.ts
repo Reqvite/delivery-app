@@ -2,12 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserDataSchema } from "./types";
 import { Food } from "../categories/types";
 import { toast } from "react-hot-toast";
-import { addUserOrder } from "./operations";
+import { addUserOrder, getUserHistory } from "./operations";
 import { calculateTotalPrice } from "~/shared/lib/calculateTotalPrice";
 import { MAX_QUANTITY } from "~/shared/const/const";
 
 const initialState: UserDataSchema = {
     deliveryList: [],
+    userHistory: [],
     isLoading: false,
     totalPrice: 0,
     activeCategory: '',
@@ -122,12 +123,25 @@ export const userSlice = createSlice({
                 state.isLoading = false;
                 state.deliveryList = [];
                 state.totalPrice = 0;
-                state.activeCategory = ''
+                state.activeCategory = '';
+                state.address = '';
                 toast.success(
                     `Thank you for your order, our manager will contact you soon.`
                 );
             })
             .addCase(addUserOrder.rejected, (state, action: any) => {
+                state.isLoading = false;
+                state.error = action.payload;
+                toast.error(action.payload);
+            }).addCase(getUserHistory.pending, (state) => {
+                state.error = undefined;
+                state.isLoading = true;
+            })
+            .addCase(getUserHistory.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.userHistory = action.payload;
+            })
+            .addCase(getUserHistory.rejected, (state, action: any) => {
                 state.isLoading = false;
                 state.error = action.payload;
                 toast.error(action.payload);

@@ -53,7 +53,7 @@ export const CartListForm = () => {
                 </label>
                 <label className={cls.label} htmlFor="name">
                     Name
-                    <input name="name" className={cls.input} type="text" id="email" onChange={formik.handleChange}
+                    <input name="name" className={cls.input} type="text" id="email" required onChange={formik.handleChange}
                         value={formik.values.name} />
                 </label>
                 <label className={cls.label} htmlFor="email">

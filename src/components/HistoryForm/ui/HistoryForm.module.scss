@@ -1,0 +1,70 @@
+.formBox {
+  width: 300px;
+  max-width: 800px;
+  min-width: 150px;
+  margin-top: 25px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media screen and (width >= 450px) {
+    width: 100%;
+  }
+
+  @media screen and (width >= 860px) {
+    margin-top: 0;
+  }
+}
+
+.HistoryForm {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-weight: var(--font-weight-bold);
+
+  &:first-child {
+    margin-top: 20px;
+  }
+
+  &:not(:first-child) {
+    margin-top: 10px;
+  }
+}
+
+.input {
+  height: 50px;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.btnBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  margin-top: 40px;
+
+  @media screen and (width >= 450px) {
+    flex-direction: row;
+  }
+}
+
+.btn {
+  width: 200px;
+
+  @media screen and (width <= 450px) {
+    margin-top: 10px;
+  }
+}
+
+.loader {
+  width: 100%;
+  height: 100%;
+}

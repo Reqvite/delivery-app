@@ -24,3 +24,18 @@ export const addUserOrder = createAsyncThunk(
         }
     },
 );
+
+export const getUserHistory = createAsyncThunk(
+    'user/getUserHistory',
+    async (searchValue: string, thunkAPI) => {
+        try {
+            const response = await instance.get(`api/user/?searchValue=${searchValue}`);
+            if (!response.data) {
+                throw new Error();
+            }
+            return response.data.orders;
+        } catch (e: any) {
+            return thunkAPI.rejectWithValue(e.response.data.message);
+        }
+    },
+);

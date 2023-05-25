@@ -14,6 +14,7 @@ export const Navbar = () => {
 					</li>
 					<li><AppLink to="/">Shop</AppLink></li>
 					<li><AppLink to="/shopping-cart">Shopping cart</AppLink></li>
+					<li><AppLink to="/history">History</AppLink></li>
 				</ul>
 			</nav>
 		</header>
