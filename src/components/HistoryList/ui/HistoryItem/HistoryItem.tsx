@@ -32,7 +32,7 @@ export const HistoryItem: FC<HistoryItemProps> = (props) => {
       </div>
       <p className={cls.listTitle}>Ordered food </p>
       <ul className={cls.list}>
-        {foodList.map(({ title, img_url, quantity, totalPrice }) => (
+        {foodList?.map(({ title, img_url, quantity, totalPrice }) => (
           <li key={nanoid()} className={cls.listItem}>
             <p className={cls.listTitle}>{title}</p>
             <div className={cls.infoBox}>

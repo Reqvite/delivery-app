@@ -5,20 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
 import { selectUserAddress } from "~/redux/user/selectors";
 import { encodeAddress, getGeoCode } from "~/shared/lib/map";
+import { DEFOULT_GEO } from "~/shared/const/const";
 import cls from "./GoogleMaps.module.scss";
 
 const GoogleMaps = () => {
   const dispacth = useDispatch<AppDispatch>();
-  const center = useMemo(
-    () => ({
-      lat: 50.450001,
-      lng: 30.523333,
-    }),
-    []
-  );
 
-  const [markerPosition, setMarkerPosition] = useState(center);
   const address = useSelector(selectUserAddress);
+
+  const [markerPosition, setMarkerPosition] = useState(DEFOULT_GEO);
 
   const { isLoaded } = useLoadScript({
     id: "google-map-script",

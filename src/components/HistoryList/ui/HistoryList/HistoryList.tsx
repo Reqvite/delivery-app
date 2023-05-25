@@ -15,7 +15,7 @@ export const HistoryList = () => {
 
   return (
     <ul className={cls.CartList}>
-      {historyList.map((order: Order) => (
+      {historyList?.map((order: Order) => (
         <HistoryItem key={order._id} {...order} />
       ))}
     </ul>

@@ -23,6 +23,9 @@ export const Navbar = () => {
           <li>
             <AppLink to="/history">History</AppLink>
           </li>
+          <li>
+            <AppLink to="/coupons">Coupons</AppLink>
+          </li>
         </ul>
         <AppLink className={cls.cart} to="/shopping-cart">
           <BsCart3 size={30} />
