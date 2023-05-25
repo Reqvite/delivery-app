@@ -27,7 +27,7 @@ export const ProductsListItem: FC<Food> = (food) => {
         <h2 className={cls.title}>{title}</h2>
         <div className={cls.buttonBox}>
           <span>${price}</span>
-          <Button variant={ButtonVariant.BACKGROUND} onClick={hanldeAddButton}>Add to cart</Button>
+          <Button className={cls.btn} variant={ButtonVariant.BACKGROUND} onClick={hanldeAddButton}>Add to cart</Button>
         </div>
       </div>
     </li >

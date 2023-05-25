@@ -10,6 +10,7 @@ const initialState: UserDataSchema = {
     deliveryList: [],
     isLoading: false,
     totalPrice: 0,
+    activeCategory: ''
 };
 
 const calculateQuantity = (existingFood: Food) => {
@@ -23,6 +24,9 @@ export const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
+        setActiveCategory: (state, action: PayloadAction<string>) => {
+            state.activeCategory = action.payload
+        },
         addFoodToList: (state, action: PayloadAction<Food>) => {
             const [existingFood] = state.deliveryList.filter(
                 (item) => item._id === action.payload._id
@@ -111,6 +115,7 @@ export const userSlice = createSlice({
                 state.isLoading = false;
                 state.deliveryList = [];
                 state.totalPrice = 0;
+                state.activeCategory = ''
                 toast.success(
                     `Thank you for your order, our manager will contact you soon.`
                 );

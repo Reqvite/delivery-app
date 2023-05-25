@@ -6,4 +6,5 @@ export interface UserDataSchema {
     isLoading: boolean;
     totalPrice: number;
     error?: unknown;
+    activeCategory?: string;
 }
