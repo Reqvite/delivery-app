@@ -1,12 +1,14 @@
-import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import { useFormik } from 'formik';
-import cls from "./CartListForm.module.scss"
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
+import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import { addUserOrder } from "~/redux/user/operations";
-import { selectDeliveryList, selectTotalPrice, selectUserIsLoading } from "~/redux/user/selectors";
-import { Loader } from "~/shared/ui/Loader/Loader";
+import { selectDeliveryList, selectTotalPrice, selectUserAddress, selectUserIsLoading } from "~/redux/user/selectors";
 import { USER_DELIVERY_LIST } from "~/shared/const/const";
+import { Loader } from "~/shared/ui/Loader/Loader";
+import cls from "./CartListForm.module.scss"
+import { GoogleMaps } from '~/components/GoogleMap';
+import { userActions } from '~/redux/user/userSlice';
 
 export const CartListForm = () => {
     const dispatch = useDispatch<AppDispatch>()
@@ -14,13 +16,15 @@ export const CartListForm = () => {
     const foodList = useSelector(selectDeliveryList)
     const total = useSelector(selectTotalPrice)
     const isLoading = useSelector(selectUserIsLoading)
+    const address = useSelector(selectUserAddress)
+
 
     const formik = useFormik({
         initialValues: {
             name: '',
             email: '',
             phone: '',
-            address: ''
+            address: address
         },
         onSubmit: (values, { resetForm }) => {
             dispatch(addUserOrder({ foodList, ...values }))
@@ -29,11 +33,23 @@ export const CartListForm = () => {
         },
     });
 
+    const handleAddressChange = (event) => {
+        const newAddress = event.target.value;
+        dispatch(userActions.setAddress(newAddress))
+        formik.handleChange(event);
+    };
+
     return (
         <div className={cls.formBox}>
+            <GoogleMaps />
             <h1>Add contact details for your order
             </h1>
             <form className={cls.CartListForm} onSubmit={formik.handleSubmit}>
+                <label className={cls.label} htmlFor="address">
+                    Address
+                    <input name="address" className={cls.input} type="text" required onChange={handleAddressChange}
+                        value={address} />
+                </label>
                 <label className={cls.label} htmlFor="name">
                     Name
                     <input name="name" className={cls.input} type="text" id="email" onChange={formik.handleChange}
@@ -50,11 +66,6 @@ export const CartListForm = () => {
                     <input name="phone" className={cls.input} type="text" required onChange={formik.handleChange}
                         value={formik.values.phone} />
                     <p className={cls.text}>We’ll send order updates to this number.</p>
-                </label>
-                <label className={cls.label} htmlFor="address">
-                    Address
-                    <input name="address" className={cls.input} type="text" required onChange={formik.handleChange}
-                        value={formik.values.address} />
                 </label>
                 <div className={cls.btnBox}>
                     <span className={cls.price}>Total Price: $ {total.toFixed(2)}</span>

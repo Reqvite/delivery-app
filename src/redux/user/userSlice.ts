@@ -10,7 +10,8 @@ const initialState: UserDataSchema = {
     deliveryList: [],
     isLoading: false,
     totalPrice: 0,
-    activeCategory: ''
+    activeCategory: '',
+    address: ''
 };
 
 const calculateQuantity = (existingFood: Food) => {
@@ -103,6 +104,12 @@ export const userSlice = createSlice({
             }
 
             state.totalPrice = calculateTotalPrice(state.deliveryList);
+        },
+        emptyCart: (state) => {
+            state.deliveryList = []
+        },
+        setAddress: (state, action: PayloadAction<string>) => {
+            state.address = action.payload
         },
     },
     extraReducers: (builder) => {

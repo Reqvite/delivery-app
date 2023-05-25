@@ -1,9 +1,10 @@
+import { useSelector } from "react-redux";
 import { CartList } from "~/components/CartList";
 import { CartListForm } from "~/components/CartListForm";
-import cls from "./ShoppingCartPage.module.scss";
 import { CartEmptyBox } from "~/components/CartEmptyBox";
-import { useSelector } from "react-redux";
 import { selectDeliveryList } from "~/redux/user/selectors";
+import cls from "./ShoppingCartPage.module.scss";
+
 
 const ShoppingCartPage = () => {
     const deliveryList = useSelector(selectDeliveryList);

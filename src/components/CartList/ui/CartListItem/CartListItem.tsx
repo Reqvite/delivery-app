@@ -8,8 +8,6 @@ import { userActions } from "~/redux/user/userSlice";
 import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import { MAX_QUANTITY } from "~/shared/const/const";
 
-
-
 export const CartListItem: FC<Food> = (food) => {
     const {
         _id,

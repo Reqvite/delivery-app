@@ -8,7 +8,7 @@ export const NotFoundPage = () => {
 		<div className={cls.wrapper}>
 			<div className={cls.NotFoundBox}>
 				<h1>Sorry, page not found.</h1>
-				<Button variant={ButtonVariant.BACKGROUND} className={cls.btn}><Link to="/">Back</Link></Button>
+				<Button variant={ButtonVariant.BACKGROUND} className={cls.btn}><Link to="/">Back to shopping</Link></Button>
 			</div>
 		</div>
 	);

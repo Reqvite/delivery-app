@@ -18,7 +18,6 @@ export const addUserOrder = createAsyncThunk(
             if (!response.data) {
                 throw new Error();
             }
-            console.log(response.data)
             return response.data.order;
         } catch (e: any) {
             return thunkAPI.rejectWithValue(e.response.data.message);

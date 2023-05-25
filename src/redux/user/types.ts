@@ -7,4 +7,5 @@ export interface UserDataSchema {
     totalPrice: number;
     error?: unknown;
     activeCategory?: string;
+    address: string;
 }

@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CategoriesItem, CategoryItemStatus } from "../CategoriesItem/CategoriesItem";
-import cls from "./CategoriesList.module.scss"
-import { getCategories } from "~/redux/categories/operations";
-import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
-import { selectCategories } from "~/redux/categories/selectors";
 import { nanoid } from "@reduxjs/toolkit";
+import { CategoriesItem, CategoryItemStatus } from "../CategoriesItem/CategoriesItem";
+import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
+import { getCategories } from "~/redux/categories/operations";
+import { selectCategories } from "~/redux/categories/selectors";
 import { selectDeliveryList } from "~/redux/user/selectors";
 import { userActions } from "~/redux/user/userSlice";
-
+import cls from "./CategoriesList.module.scss"
 
 export const CategoriesList = () => {
     const [activeCategory, setActiveCategory] = useState<string>("all");

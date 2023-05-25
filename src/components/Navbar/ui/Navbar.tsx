@@ -1,15 +1,10 @@
-import { classNames } from "~/shared/lib/classNames";
 import { AppLink } from "~/shared/ui/AppLink/AppLink";
 import { IoFastFoodSharp } from "react-icons/io5";
 import cls from './Navbar.module.scss'
 
-interface NavbarProps {
-  className?: string;
-}
-
-export const Navbar = ({ className = '' }: NavbarProps) => {
+export const Navbar = () => {
 	return (
-		<header className={classNames(cls.Navbar, {}, [className])} >
+		<header className={cls.Navbar} >
 			<nav>
 				<ul className={cls.list}>
 					<li className={cls.item}>

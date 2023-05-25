@@ -1,5 +1,6 @@
-import cls from "./Footer.module.scss"
 import { AiFillInstagram, AiFillFacebook, AiFillTwitterSquare } from "react-icons/ai";
+import cls from "./Footer.module.scss"
+
 
 
 export const Footer = () => {

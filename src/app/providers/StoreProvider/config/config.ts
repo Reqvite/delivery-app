@@ -10,8 +10,6 @@ const userPersistConfig = {
     storage,
 };
 
-
-
 const rootReducer: ReducersMapObject<StateSchema> = {
     categories: categoriesReducer,
     user: persistReducer(userPersistConfig, userReducer)

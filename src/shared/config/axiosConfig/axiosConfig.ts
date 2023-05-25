@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export const instance = axios.create({
-    baseURL: "https://delivery-api-qswu.onrender.com",
+    baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
-// https://delivery-api-qswu.onrender.com
 // http://localhost:3000

@@ -1,15 +1,15 @@
 import { Suspense, useEffect } from 'react';
-import { Navbar } from '~/components/Navbar';
-import AppRouter from './providers/routes/ui/AppRouter';
-import "./styles/index.scss";
-import { Sidebar } from '~/components/Sidebar';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from './providers/StoreProvider/config/config';
-import { MAIN_PAGE_FOOD } from '~/shared/const/const';
-import { getCategoryFood } from '~/redux/categories/operations';
 import { Toaster } from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navbar } from '~/components/Navbar';
+import { Sidebar } from '~/components/Sidebar';
 import { Footer } from '~/components/Footer';
+import AppRouter from './providers/routes/ui/AppRouter';
+import { AppDispatch } from './providers/StoreProvider/config/config';
+import { getCategoryFood } from '~/redux/categories/operations';
 import { selectActiveCategory } from '~/redux/user/selectors';
+import { MAIN_PAGE_FOOD } from '~/shared/const/const';
+import "./styles/index.scss";
 
 const App = () => {
 

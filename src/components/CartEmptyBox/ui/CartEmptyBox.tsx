@@ -3,7 +3,6 @@ import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import { Link } from "react-router-dom";
 
 
-
 export const CartEmptyBox = () => {
 
     return (

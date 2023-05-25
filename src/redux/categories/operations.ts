@@ -1,8 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { instance } from '~/shared/config/axiosConfig/axiosConfig';
 
-
-
 export const getCategories = createAsyncThunk(
     'categories/getCategories',
     async (_, thunkAPI) => {
