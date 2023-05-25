@@ -10,8 +10,7 @@
 - Redux Toolkit,
 - Axios,
 - Formik,
-- Yup,
-- React-hot-toast,
+- React-hot-toast
 
 ## Installation and launch of the project
 
@@ -28,24 +27,19 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-### `npm run lint:ts`
-
+### `npm run lint:ts` 
 This script runs ESLint to check for linting issues in TypeScript and TSX files.
 
-### `npm run lint:ts:fix`
-
+### `npm run lint:ts:fix` 
 This script runs ESLint with the --fix flag to automatically fix fixable linting issues in TypeScript and TSX files.
 
-### `npm run lint:scss`
-
+### `npm run lint:scss` 
 This script runs Stylelint to check for linting issues in SCSS files.
 
-### `lint:scss:fix`
-
+### `lint:scss:fix` 
 This script runs Stylelint with the --fix flag to automatically fix fixable linting issues in SCSS files.
 
 ### `npm run build`
-
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
@@ -53,3 +47,5 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 ## Back-end part
+
+[Back-end](https://github.com/Reqvite/delivery-api)
