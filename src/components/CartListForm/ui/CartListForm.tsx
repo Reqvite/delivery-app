@@ -9,6 +9,7 @@ import { Loader } from "~/shared/ui/Loader/Loader";
 import cls from "./CartListForm.module.scss"
 import { GoogleMaps } from '~/components/GoogleMap';
 import { userActions } from '~/redux/user/userSlice';
+import { ChangeEvent } from 'react';
 
 export const CartListForm = () => {
     const dispatch = useDispatch<AppDispatch>()
@@ -33,10 +34,10 @@ export const CartListForm = () => {
         },
     });
 
-    const handleAddressChange = (event) => {
-        const newAddress = event.target.value;
+    const handleAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const newAddress = e.target.value;
         dispatch(userActions.setAddress(newAddress))
-        formik.handleChange(event);
+        formik.handleChange(e);
     };
 
     return (

@@ -2,7 +2,9 @@ import axios from 'axios'
 import { AppDispatch } from '~/app/providers/StoreProvider/config/config';
 import { userActions } from '~/redux/user/userSlice';
 
-export const encodeAddress = async (address: string, setMarkerPosition) => {
+
+export const encodeAddress = async (address: string,
+    setMarkerPosition: (arg: any) => void) => {
     try {
         const encodedAddress = encodeURIComponent(address);
         const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${import.meta.env.VITE_API_KEY_MAPS}`);
@@ -23,7 +25,9 @@ export const encodeAddress = async (address: string, setMarkerPosition) => {
     }
 }
 
-export const getGeoCode = async (dispacth: AppDispatch, setMarkerPosition, lat: number | string, lng: number | string) => {
+export const getGeoCode = async (dispacth: AppDispatch,
+    setMarkerPosition: (arg: any) => void,
+    lat: number | string, lng: number | string) => {
     try {
         const { data } = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${import.meta.env.VITE_API_KEY_MAPS}`)
         dispacth(userActions.setAddress(data.results[0].formatted_address))

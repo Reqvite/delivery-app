@@ -40,9 +40,9 @@ const GoogleMaps = () => {
     }, [dispacth]);
 
 
-    const handleMapClick = async (event: any) => {
-        const lat: string = event.latLng.lat();
-        const lng: string = event.latLng.lng();
+    const handleMapClick = async (event: google.maps.MapMouseEvent) => {
+        const lat = event.latLng!.lat();
+        const lng = event.latLng!.lng();
 
         getGeoCode(dispacth, setMarkerPosition, lat, lng)
     };
