@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
 import { selectUserAddress } from "~/redux/user/selectors";
 import { encodeAddress, getGeoCode } from "~/shared/lib/map";
-import { DEFOULT_GEO } from "~/shared/const/const";
+import { DEFAULT_SHOP_GEO } from "~/shared/const/const";
 import cls from "./GoogleMaps.module.scss";
 
 const GoogleMaps = () => {
@@ -18,7 +18,7 @@ const GoogleMaps = () => {
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const address = useSelector(selectUserAddress);
 
-  const [markerPosition, setMarkerPosition] = useState(DEFOULT_GEO);
+  const [markerPosition, setMarkerPosition] = useState(DEFAULT_SHOP_GEO);
 
   const { isLoaded } = useLoadScript({
     id: "google-map-script",
