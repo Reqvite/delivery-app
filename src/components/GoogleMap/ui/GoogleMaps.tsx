@@ -16,6 +16,7 @@ import cls from "./GoogleMaps.module.scss";
 const GoogleMaps = () => {
   const dispacth = useDispatch<AppDispatch>();
   const [directionsResponse, setDirectionsResponse] = useState(null);
+  const [map, setMap] = useState(null);
   const address = useSelector(selectUserAddress);
 
   const [markerPosition, setMarkerPosition] = useState(DEFAULT_SHOP_GEO);
@@ -52,18 +53,20 @@ const GoogleMaps = () => {
     if (address) {
       encodeAddress(address, setMarkerPosition);
       const setDirection = async () => {
-        const directionsService = new window.google.maps.DirectionsService();
-        const results: any = await directionsService.route({
-          origin: DEFAULT_SHOP_GEO,
-          destination: address,
-          travelMode: window.google.maps.TravelMode.DRIVING,
-        });
+        if (map) {
+          const directionsService = new window.google.maps.DirectionsService();
+          const results: any = await directionsService.route({
+            origin: DEFAULT_SHOP_GEO,
+            destination: address,
+            travelMode: window.google.maps.TravelMode.DRIVING,
+          });
 
-        setDirectionsResponse(results);
+          setDirectionsResponse(results);
+        }
       };
       setDirection();
     }
-  }, [address]);
+  }, [address, map]);
 
   return isLoaded ? (
     <GoogleMap
@@ -71,6 +74,7 @@ const GoogleMaps = () => {
       center={markerPosition}
       zoom={12}
       onClick={handleMapClick}
+      onLoad={(map) => setMap(map)}
     >
       <Marker position={markerPosition} title="place" />
       {directionsResponse && (
