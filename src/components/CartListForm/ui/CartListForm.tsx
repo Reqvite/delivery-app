@@ -60,7 +60,7 @@ export const CartListForm = () => {
     dispatch(getUserDiscount(discount));
   };
 
-  function onChange(value) {
+  function onChange(value: string) {
     console.log("Captcha value:", value);
   }
 
