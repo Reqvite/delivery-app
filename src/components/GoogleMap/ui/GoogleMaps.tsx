@@ -16,7 +16,7 @@ import cls from "./GoogleMaps.module.scss";
 const GoogleMaps = () => {
   const dispacth = useDispatch<AppDispatch>();
   const [directionsResponse, setDirectionsResponse] = useState(null);
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState<google.maps.Map | null>(null);
   const address = useSelector(selectUserAddress);
 
   const [markerPosition, setMarkerPosition] = useState(DEFAULT_SHOP_GEO);
