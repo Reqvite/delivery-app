@@ -10,7 +10,9 @@
 - Redux Toolkit,
 - Axios,
 - Formik,
-- React-hot-toast
+- React-hot-toast,
+- React-google-recaptcha,
+- React-google-maps/api
 
 ## Installation and launch of the project
 
