@@ -15,7 +15,7 @@ import { MAX_QUANTITY } from "~/shared/const/const";
 export const CartListItem: FC<Food> = (food) => {
   const { _id, title, img_url, quantity, totalPrice, price } = food;
 
-  const updatedPrice = totalPrice! < price ? price : totalPrice;
+  const updatedPrice = price * quantity!;
   const [, setInputQuantity] = useState<number | undefined>(quantity);
   const dispatch = useDispatch<AppDispatch>();
 
