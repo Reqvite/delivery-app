@@ -16,10 +16,12 @@ import { Loader } from "~/shared/ui/Loader/Loader";
 import cls from "./CartListForm.module.scss";
 import { GoogleMaps } from "~/components/GoogleMap";
 import { userActions } from "~/redux/user/userSlice";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export const CartListForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [discount, setDiscount] = useState("");
+  const [captcha, setCaptcha] = useState<string | null>(null);
 
   const foodList = useSelector(selectDeliveryList);
   const total = useSelector(selectTotalPrice);
@@ -35,10 +37,20 @@ export const CartListForm = () => {
       address: address,
     },
     onSubmit: ({ name, email, phone }, { resetForm }) => {
-      dispatch(
-        addUserOrder({ foodList, name, email, address, phone: String(phone) })
-      );
-      resetForm();
+      if (captcha) {
+        dispatch(
+          addUserOrder({
+            foodList,
+            name,
+            email,
+            address,
+            phone: String(phone),
+          })
+        );
+        resetForm();
+      } else {
+        toast.error("Please complete the captcha.");
+      }
     },
   });
 
@@ -59,6 +71,10 @@ export const CartListForm = () => {
     dispatch(getUserDiscount(discount));
   };
 
+  const onChangeCaptcha = (value: string | null) => {
+    console.log(value);
+    setCaptcha(value);
+  };
   return (
     <div className={cls.formBox}>
       <GoogleMaps />
@@ -130,6 +146,11 @@ export const CartListForm = () => {
             </Button>
           </div>
           <span className={cls.price}>Total Price: $ {total.toFixed(2)}</span>
+          <ReCAPTCHA
+            size="compact"
+            sitekey={import.meta.env.VITE_API_KEY_RECAPTCHA}
+            onChange={onChangeCaptcha}
+          />
           <Button
             type="submit"
             variant={ButtonVariant.BACKGROUND}

@@ -185,7 +185,7 @@ export const userSlice = createSlice({
       })
       .addCase(addUserOrder.fulfilled, (state) => {
         clearState(state);
-        state.isLoading = true;
+        state.isLoading = false;
         toast.success(
           `Thank you for your order, our manager will contact you soon.`
         );
