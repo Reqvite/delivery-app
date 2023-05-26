@@ -1,4 +1,9 @@
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import {
+  DirectionsRenderer,
+  GoogleMap,
+  Marker,
+  useLoadScript,
+} from "@react-google-maps/api";
 import { useEffect, useState } from "react";
 import { Loader } from "~/shared/ui/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +15,7 @@ import cls from "./GoogleMaps.module.scss";
 
 const GoogleMaps = () => {
   const dispacth = useDispatch<AppDispatch>();
-
+  const [directionsResponse, setDirectionsResponse] = useState(null);
   const address = useSelector(selectUserAddress);
 
   const [markerPosition, setMarkerPosition] = useState(DEFOULT_GEO);
@@ -46,6 +51,18 @@ const GoogleMaps = () => {
   useEffect(() => {
     if (address) {
       encodeAddress(address, setMarkerPosition);
+      const func = async () => {
+        console.log(window.google);
+        const directionsService = new window.google.maps.DirectionsService();
+        const results = await directionsService.route({
+          origin: "kiev",
+          destination: "nikopol",
+          travelMode: window.google.maps.TravelMode.DRIVING,
+        });
+
+        console.log(results);
+      };
+      func();
     }
   }, [address]);
 
@@ -57,6 +74,9 @@ const GoogleMaps = () => {
       onClick={handleMapClick}
     >
       <Marker position={markerPosition} title="place" />
+      {directionsResponse && (
+        <DirectionsRenderer directions={directionsResponse} />
+      )}
     </GoogleMap>
   ) : (
     <Loader className={cls.loader} />
