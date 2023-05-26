@@ -1,5 +1,5 @@
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Loader } from "~/shared/ui/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";

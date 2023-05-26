@@ -14,7 +14,17 @@
 
 .outlined {
   border: 1px solid var(--primary-color);
+  border-radius: 8px;
   background: none;
+  transition-property: background, border-color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+
+  &:hover,
+  &:focus {
+    background: var(--accent-color);
+    border-color: transparent;
+  }
 }
 
 .background {

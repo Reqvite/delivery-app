@@ -1,28 +1,31 @@
+import { toast } from "react-hot-toast";
+import { ChangeEvent, useState } from "react";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
 import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
-import { addUserOrder } from "~/redux/user/operations";
+import { addUserOrder, getUserDiscount } from "~/redux/user/operations";
 import {
   selectDeliveryList,
   selectTotalPrice,
   selectUserAddress,
+  selectUserDiscount,
   selectUserIsLoading,
 } from "~/redux/user/selectors";
-import { USER_DELIVERY_LIST } from "~/shared/const/const";
 import { Loader } from "~/shared/ui/Loader/Loader";
 import cls from "./CartListForm.module.scss";
 import { GoogleMaps } from "~/components/GoogleMap";
 import { userActions } from "~/redux/user/userSlice";
-import { ChangeEvent } from "react";
 
 export const CartListForm = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const [discount, setDiscount] = useState("");
 
   const foodList = useSelector(selectDeliveryList);
   const total = useSelector(selectTotalPrice);
   const isLoading = useSelector(selectUserIsLoading);
   const address = useSelector(selectUserAddress);
+  const userDiscount = useSelector(selectUserDiscount);
 
   const formik = useFormik({
     initialValues: {
@@ -31,9 +34,10 @@ export const CartListForm = () => {
       phone: "",
       address: address,
     },
-    onSubmit: (values, { resetForm }) => {
-      dispatch(addUserOrder({ foodList, ...values }));
-      localStorage.removeItem(USER_DELIVERY_LIST);
+    onSubmit: ({ name, email, phone }, { resetForm }) => {
+      dispatch(
+        addUserOrder({ foodList, name, email, address, phone: String(phone) })
+      );
       resetForm();
     },
   });
@@ -42,6 +46,17 @@ export const CartListForm = () => {
     const newAddress = e.target.value;
     dispatch(userActions.setAddress(newAddress));
     formik.handleChange(e);
+  };
+
+  const handleSubmitCouponButton = () => {
+    if (userDiscount !== 0) {
+      toast.error("You already applied your coupon.");
+      return;
+    }
+    if (!discount) {
+      return;
+    }
+    dispatch(getUserDiscount(discount));
   };
 
   return (
@@ -91,7 +106,7 @@ export const CartListForm = () => {
           <input
             name="phone"
             className={cls.input}
-            type="text"
+            type="number"
             required
             onChange={formik.handleChange}
             value={formik.values.phone}
@@ -99,6 +114,21 @@ export const CartListForm = () => {
           <p className={cls.text}>We’ll send order updates to this number.</p>
         </label>
         <div className={cls.btnBox}>
+          <div className={cls.discountBox}>
+            <input
+              placeholder="Write your coupon"
+              type="text"
+              className={cls.input}
+              onChange={(e) => setDiscount(e.target.value)}
+              value={discount}
+            />
+            <Button
+              variant={ButtonVariant.OUTLINED}
+              onClick={handleSubmitCouponButton}
+            >
+              Get discount
+            </Button>
+          </div>
           <span className={cls.price}>Total Price: $ {total.toFixed(2)}</span>
           <Button
             type="submit"

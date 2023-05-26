@@ -26,10 +26,20 @@ export const getCategoryFood = createAsyncThunk(
       const response = await instance.get(
         `api/categories/category?name=${categoryName}`
       );
-      if (!response.data) {
-        throw new Error();
-      }
       return response.data.food;
+    } catch (e) {
+      console.log(e);
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
+
+export const getFoodCoupons = createAsyncThunk(
+  "categories/getFoodCoupons",
+  async (_, thunkAPI) => {
+    try {
+      const response = await instance.get(`api/categories/coupons`);
+      return response.data.coupons;
     } catch (e) {
       console.log(e);
       return thunkAPI.rejectWithValue(e);

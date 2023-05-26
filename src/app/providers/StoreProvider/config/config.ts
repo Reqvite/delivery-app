@@ -8,7 +8,13 @@ import { persistReducer, persistStore } from "redux-persist";
 const userPersistConfig = {
   key: "user",
   storage,
-  whitelist: ["totalPrice", "totalQuantity", "deliveryList", "activeCategory"],
+  whitelist: [
+    "totalPrice",
+    "totalQuantity",
+    "deliveryList",
+    "activeCategory",
+    "discount",
+  ],
 };
 
 const rootReducer: ReducersMapObject<StateSchema> = {

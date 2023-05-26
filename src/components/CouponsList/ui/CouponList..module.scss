@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.itemTitle {
+  font: var(--font-l);
+  font-weight: var(--font-weight-bold);
+}
+
+.CouponList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 250px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: rgb(0 0 0 / 35%) 0 5px 15px;
+  gap: 5px;
+}

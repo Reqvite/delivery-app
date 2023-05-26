@@ -1,5 +1,11 @@
+import { CouponList } from "~/components/CouponsList";
+
 const CouponsPage = () => {
-  return <div>Coupons</div>;
+  return (
+    <div>
+      <CouponList />
+    </div>
+  );
 };
 
 export default CouponsPage;

@@ -8,3 +8,4 @@ export const selectListOfFood = (state: StateSchema) =>
   state?.categories.listOfFood;
 export const selectPageIsLoading = (state: StateSchema) =>
   state?.categories.pageIsLoading;
+export const selectCoupons = (state: StateSchema) => state?.categories.coupons;

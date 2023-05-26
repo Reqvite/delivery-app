@@ -12,3 +12,4 @@ export const selectUserHistory = (state: StateSchema) =>
   state?.user.userHistory;
 export const selectUserTotalQuantity = (state: StateSchema) =>
   state?.user.totalQuantity;
+export const selectUserDiscount = (state: StateSchema) => state?.user.discount;

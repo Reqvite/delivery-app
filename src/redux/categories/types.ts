@@ -9,10 +9,17 @@ export interface Food {
   totalPrice?: number;
 }
 
+export interface Coupon {
+  _id: string;
+  title: string;
+  discount: number;
+}
+
 export interface CategoriesSchema {
   listOfCategories: string[];
   listOfFood: Food[];
+  coupons: Coupon[];
   isLoading: boolean;
   error?: unknown;
-  pageIsLoading?: boolean;
+  pageIsLoading: boolean;
 }

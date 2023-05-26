@@ -1,7 +1,11 @@
 .AppLink {
   color: var(--primary-color);
-  font: var(--font-l);
+  font: var(--font-m);
   font-weight: var(--font-weight-bolder);
+
+  @media screen and (min-width: 600px) {
+    font: var(--font-l);
+  }
 
   &.active {
     color: var(--active-color);

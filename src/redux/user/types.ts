@@ -8,5 +8,6 @@ export interface UserDataSchema {
   totalQuantity: number;
   error?: unknown;
   activeCategory?: string;
+  discount: number;
   address: string;
 }

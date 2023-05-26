@@ -15,9 +15,6 @@ export const addUserOrder = createAsyncThunk(
   async (order: Order, thunkAPI) => {
     try {
       const response = await instance.post(`api/user/order`, order);
-      if (!response.data) {
-        throw new Error();
-      }
       return response.data.order;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.response.data.message);
@@ -32,10 +29,21 @@ export const getUserHistory = createAsyncThunk(
       const response = await instance.get(
         `api/user/?searchValue=${searchValue}`
       );
-      if (!response.data) {
-        throw new Error();
-      }
       return response.data.orders;
+    } catch (e: any) {
+      return thunkAPI.rejectWithValue(e.response.data.message);
+    }
+  }
+);
+
+export const getUserDiscount = createAsyncThunk(
+  "user/getUserDiscount",
+  async (discount: string, thunkAPI) => {
+    try {
+      const response = await instance.get(
+        `api/user/discount?title=${discount}`
+      );
+      return response.data.discount;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.response.data.message);
     }

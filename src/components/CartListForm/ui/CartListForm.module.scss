@@ -6,11 +6,11 @@
   margin-right: auto;
   margin-left: auto;
 
-  @media screen and (width >= 450px) {
+  @media screen and (width >= 660px) {
     width: 100%;
   }
 
-  @media screen and (width >= 860px) {
+  @media screen and (width >= 1070px) {
     margin-top: 0;
   }
 }
@@ -55,8 +55,9 @@
   justify-content: space-around;
   flex-direction: column;
   margin-top: 40px;
+  gap: 10px;
 
-  @media screen and (width >= 450px) {
+  @media screen and (width >= 660px) {
     flex-direction: row;
   }
 }
@@ -65,7 +66,7 @@
   width: 200px;
   font-weight: var(--font-weight-bold);
 
-  @media screen and (width <= 450px) {
+  @media screen and (width <= 660px) {
     text-align: center;
   }
 }
@@ -73,7 +74,7 @@
 .btn {
   width: 200px;
 
-  @media screen and (width <= 450px) {
+  @media screen and (width <= 660px) {
     margin-top: 10px;
   }
 }
@@ -81,4 +82,10 @@
 .loader {
   width: 100%;
   height: 100%;
+}
+
+.discountBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
