@@ -6,7 +6,7 @@
   margin-right: auto;
   margin-left: auto;
 
-  @media screen and (width >= 660px) {
+  @media screen and (width >= 860px) {
     width: 100%;
   }
 
@@ -57,7 +57,7 @@
   margin-top: 40px;
   gap: 10px;
 
-  @media screen and (width >= 660px) {
+  @media screen and (width >= 860px) {
     flex-direction: row;
   }
 }
@@ -66,7 +66,7 @@
   width: 200px;
   font-weight: var(--font-weight-bold);
 
-  @media screen and (width <= 660px) {
+  @media screen and (width <= 860px) {
     text-align: center;
   }
 }
@@ -74,7 +74,7 @@
 .btn {
   width: 200px;
 
-  @media screen and (width <= 660px) {
+  @media screen and (width <= 860px) {
     margin-top: 10px;
   }
 }

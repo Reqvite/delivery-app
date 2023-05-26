@@ -21,6 +21,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 export const CartListForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [discount, setDiscount] = useState("");
+  const [captcha, setCaptcha] = useState<string | null>("");
 
   const foodList = useSelector(selectDeliveryList);
   const total = useSelector(selectTotalPrice);
@@ -36,10 +37,20 @@ export const CartListForm = () => {
       address: address,
     },
     onSubmit: ({ name, email, phone }, { resetForm }) => {
-      dispatch(
-        addUserOrder({ foodList, name, email, address, phone: String(phone) })
-      );
-      resetForm();
+      if (captcha) {
+        dispatch(
+          addUserOrder({
+            foodList,
+            name,
+            email,
+            address,
+            phone: String(phone),
+          })
+        );
+        resetForm();
+      } else {
+        toast.error("Please complete the captcha.");
+      }
     },
   });
 
@@ -61,7 +72,7 @@ export const CartListForm = () => {
   };
 
   function onChange(value: string | null) {
-    console.log("Captcha value:", value);
+    setCaptcha(value);
   }
 
   return (
@@ -136,7 +147,8 @@ export const CartListForm = () => {
           </div>
           <span className={cls.price}>Total Price: $ {total.toFixed(2)}</span>
           <ReCAPTCHA
-            sitekey="6LcUWEAmAAAAAGZOoYw2CGyjyH66dFku8KXr91RU"
+            size="compact"
+            sitekey={import.meta.env.VITE_API_KEY_RECAPTCHA}
             onChange={onChange}
           />
           <Button
