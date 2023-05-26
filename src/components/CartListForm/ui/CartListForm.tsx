@@ -16,6 +16,7 @@ import { Loader } from "~/shared/ui/Loader/Loader";
 import cls from "./CartListForm.module.scss";
 import { GoogleMaps } from "~/components/GoogleMap";
 import { userActions } from "~/redux/user/userSlice";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export const CartListForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -58,6 +59,10 @@ export const CartListForm = () => {
     }
     dispatch(getUserDiscount(discount));
   };
+
+  function onChange(value) {
+    console.log("Captcha value:", value);
+  }
 
   return (
     <div className={cls.formBox}>
@@ -130,6 +135,10 @@ export const CartListForm = () => {
             </Button>
           </div>
           <span className={cls.price}>Total Price: $ {total.toFixed(2)}</span>
+          <ReCAPTCHA
+            sitekey="6LcUWEAmAAAAAGZOoYw2CGyjyH66dFku8KXr91RU"
+            onChange={onChange}
+          />
           <Button
             type="submit"
             variant={ButtonVariant.BACKGROUND}
