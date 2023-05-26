@@ -41,7 +41,7 @@ export const HistoryItem: FC<HistoryItemProps> = (props) => {
             </div>
             <div className={cls.infoBox}>
               <p>Total price: </p>
-              <span> {totalPrice}</span>
+              <span> {totalPrice?.toFixed(2)}</span>
             </div>
             <img
               className={cls.img}

@@ -38,15 +38,31 @@ export const CartListForm = () => {
     },
     onSubmit: ({ name, email, phone }, { resetForm }) => {
       if (captcha) {
+        const discountedFoodList =
+          userDiscount !== 0
+            ? foodList.map((foodItem) => {
+                const discount = (total * userDiscount) / 100;
+                const discountedPrice =
+                  foodItem.totalPrice! -
+                  (foodItem.totalPrice! * discount) / total;
+                return {
+                  ...foodItem,
+                  totalPrice: +discountedPrice.toFixed(2),
+                };
+              })
+            : foodList;
+
+        console.log(discountedFoodList);
         dispatch(
           addUserOrder({
-            foodList,
+            foodList: discountedFoodList,
             name,
             email,
             address,
             phone: String(phone),
           })
         );
+
         resetForm();
       } else {
         toast.error("Please complete the captcha.");
@@ -72,7 +88,6 @@ export const CartListForm = () => {
   };
 
   const onChangeCaptcha = (value: string | null) => {
-    console.log(value);
     setCaptcha(value);
   };
   return (
@@ -100,7 +115,7 @@ export const CartListForm = () => {
             id="email"
             required
             onChange={formik.handleChange}
-            value={formik.values.name}
+            value={formik.values.name.trim()}
           />
         </label>
         <label className={cls.label} htmlFor="email">
