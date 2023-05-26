@@ -13,7 +13,7 @@ import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import { MAX_QUANTITY } from "~/shared/const/const";
 
 export const CartListItem: FC<Food> = (food) => {
-  const { _id, title, img_url, quantity, totalPrice, price } = food;
+  const { _id, title, img_url, quantity, price } = food;
 
   const updatedPrice = price * quantity!;
   const [, setInputQuantity] = useState<number | undefined>(quantity);
