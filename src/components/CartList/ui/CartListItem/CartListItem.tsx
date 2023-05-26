@@ -13,8 +13,9 @@ import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import { MAX_QUANTITY } from "~/shared/const/const";
 
 export const CartListItem: FC<Food> = (food) => {
-  const { _id, title, img_url, quantity, totalPrice } = food;
+  const { _id, title, img_url, quantity, totalPrice, price } = food;
 
+  const updatedPrice = totalPrice! < price ? price : totalPrice;
   const [, setInputQuantity] = useState<number | undefined>(quantity);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -64,7 +65,7 @@ export const CartListItem: FC<Food> = (food) => {
         <AiOutlineClose size={20} />
       </Button>
       <h2 className={cls.title}>{title}</h2>
-      <span className={cls.price}>${totalPrice!.toFixed(2)}</span>
+      <span className={cls.price}>${updatedPrice?.toFixed(2)}</span>
       <div className={cls.inputBox}>
         <Button
           className={cls.inputRemoveButton}

@@ -6,7 +6,7 @@ import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
 import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import { Loader } from "~/shared/ui/Loader/Loader";
 import { selectUserIsLoading } from "~/redux/user/selectors";
-import { getUserHistory } from "~/redux/user/operations";
+import { getUserHistory } from "~/redux/user/asyncOperations";
 
 export const HistoryForm = () => {
   const dispatch = useDispatch<AppDispatch>();

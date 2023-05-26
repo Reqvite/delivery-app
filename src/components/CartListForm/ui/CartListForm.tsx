@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
 import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
-import { addUserOrder, getUserDiscount } from "~/redux/user/operations";
+import { addUserOrder, getUserDiscount } from "~/redux/user/asyncOperations";
 import {
   selectDeliveryList,
   selectTotalPrice,
@@ -51,8 +51,6 @@ export const CartListForm = () => {
                 };
               })
             : foodList;
-
-        console.log(discountedFoodList);
         dispatch(
           addUserOrder({
             foodList: discountedFoodList,

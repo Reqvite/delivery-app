@@ -20,7 +20,7 @@ export const HistoryItem: FC<HistoryItemProps> = (props) => {
 
   const dispatch = useDispatch<AppDispatch>();
   const hanldeRepeatButton = () => {
-    dispatch(userActions.setRepeatOerder(foodList));
+    dispatch(userActions.setRepeatOrder(foodList));
     navigate("/shopping-cart");
   };
 

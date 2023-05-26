@@ -1,10 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { toast } from "react-hot-toast";
 import { UserDataSchema } from "./types";
 import { Food } from "../categories/types";
-import { toast } from "react-hot-toast";
-import { addUserOrder, getUserDiscount, getUserHistory } from "./operations";
+import {
+  addUserOrder,
+  getUserDiscount,
+  getUserHistory,
+} from "./asyncOperations";
 import { calculateTotalSummary } from "~/shared/lib/calculateTotalSummary";
-import { MAX_QUANTITY } from "~/shared/const/const";
+import {
+  addFoodToList,
+  deleteFoodFromList,
+  addQuantity,
+  removeQuantity,
+  updateQuantityFromInput,
+  clearState,
+} from "./operations";
 
 const initialState: UserDataSchema = {
   deliveryList: [],
@@ -17,31 +28,6 @@ const initialState: UserDataSchema = {
   address: "",
 };
 
-const calculateQuantity = (existingFood: Food) => {
-  if (existingFood.quantity) {
-    existingFood.quantity += 1;
-    existingFood.totalPrice = existingFood.price * existingFood.quantity;
-  }
-};
-
-const checkDiscount = (discount: number) => {
-  if (discount !== 0) {
-    toast.error(
-      "You have already applied a coupon, complete your purchase, or empty your shopping cart to create a new order."
-    );
-    return true;
-  }
-};
-
-const clearState = (state: UserDataSchema) => {
-  state.deliveryList = [];
-  state.totalPrice = 0;
-  state.totalQuantity = 0;
-  state.activeCategory = "";
-  state.address = "";
-  state.discount = 0;
-};
-
 export const userSlice = createSlice({
   name: "user",
   initialState,
@@ -49,125 +35,18 @@ export const userSlice = createSlice({
     setActiveCategory: (state, action: PayloadAction<string>) => {
       state.activeCategory = action.payload;
     },
-    addFoodToList: (state, action: PayloadAction<Food>) => {
-      if (checkDiscount(state.discount)) {
-        return;
-      }
-      const [existingFood] = state.deliveryList.filter(
-        (item) => item._id === action.payload._id
-      );
-
-      if (existingFood) {
-        if (existingFood.quantity! >= MAX_QUANTITY) {
-          toast.error(
-            `You cannot add a quantity greater than ${MAX_QUANTITY}.`
-          );
-          return;
-        }
-        calculateQuantity(existingFood);
-      } else {
-        const updatedProduct = {
-          quantity: 1,
-          totalPrice: action.payload.price,
-          ...action.payload,
-        };
-        state.deliveryList.push(updatedProduct);
-      }
-
-      const { totalPrice, totalQuantity } = calculateTotalSummary(
-        state.deliveryList
-      );
-      state.totalPrice = totalPrice;
-      state.totalQuantity = totalQuantity;
-      toast.success(`${action.payload?.title} added to cart.`);
-    },
-    deleteFoodFromList: (state, action: PayloadAction<string>) => {
-      if (checkDiscount(state.discount)) {
-        return;
-      }
-      const idx = state.deliveryList.findIndex(
-        (food) => food._id === action.payload
-      );
-      state.deliveryList.splice(idx, 1);
-      const { totalPrice, totalQuantity } = calculateTotalSummary(
-        state.deliveryList
-      );
-      state.totalPrice = totalPrice;
-      state.totalQuantity = totalQuantity;
-    },
-    addQuantity: (state, action: PayloadAction<string>) => {
-      if (checkDiscount(state.discount)) {
-        return;
-      }
-      const [existingFood] = state.deliveryList.filter(
-        (item) => item._id === action.payload
-      );
-
-      if (existingFood.quantity) {
-        if (existingFood.quantity >= MAX_QUANTITY) {
-          return;
-        }
-      }
-
-      calculateQuantity(existingFood);
-      const { totalPrice, totalQuantity } = calculateTotalSummary(
-        state.deliveryList
-      );
-      state.totalPrice = totalPrice;
-      state.totalQuantity = totalQuantity;
-    },
-    removeQuantity: (state, action: PayloadAction<string>) => {
-      if (checkDiscount(state.discount)) {
-        return;
-      }
-      const [existingFood] = state.deliveryList.filter(
-        (item) => item._id === action.payload
-      );
-
-      if (existingFood.quantity === 1) {
-        return;
-      }
-
-      if (existingFood.quantity) {
-        existingFood.quantity -= 1;
-        existingFood.totalPrice = existingFood.price * existingFood.quantity;
-      }
-
-      const { totalPrice, totalQuantity } = calculateTotalSummary(
-        state.deliveryList
-      );
-      state.totalPrice = totalPrice;
-      state.totalQuantity = totalQuantity;
-    },
-    updateQuantityFromInput: (
-      state,
-      action: PayloadAction<{ _id: string; quantity: number }>
-    ) => {
-      if (checkDiscount(state.discount)) {
-        return;
-      }
-      const [existingFood] = state.deliveryList.filter(
-        (item) => item._id === action.payload._id
-      );
-
-      if (existingFood.quantity) {
-        existingFood.quantity = action.payload.quantity;
-        existingFood.totalPrice = existingFood.price * existingFood.quantity;
-      }
-
-      const { totalPrice, totalQuantity } = calculateTotalSummary(
-        state.deliveryList
-      );
-      state.totalPrice = totalPrice;
-      state.totalQuantity = totalQuantity;
-    },
+    addFoodToList,
+    deleteFoodFromList,
+    addQuantity,
+    removeQuantity,
+    updateQuantityFromInput,
     emptyCart: (state) => {
       clearState(state);
     },
     setAddress: (state, action: PayloadAction<string>) => {
       state.address = action.payload;
     },
-    setRepeatOerder: (state, action: PayloadAction<Food[]>) => {
+    setRepeatOrder: (state, action: PayloadAction<Food[]>) => {
       clearState(state);
       state.deliveryList = action.payload;
       const { totalPrice, totalQuantity } = calculateTotalSummary(
