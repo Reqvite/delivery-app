@@ -54,7 +54,7 @@ const GoogleMaps = () => {
       const setDirection = async () => {
         const directionsService = new window.google.maps.DirectionsService();
         const results: any = await directionsService.route({
-          origin: DEFOULT_GEO,
+          origin: DEFAULT_SHOP_GEO,
           destination: address,
           travelMode: window.google.maps.TravelMode.DRIVING,
         });
