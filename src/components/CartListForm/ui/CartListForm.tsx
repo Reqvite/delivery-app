@@ -1,5 +1,5 @@
 import { toast } from "react-hot-toast";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, createRef, useState } from "react";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
@@ -21,7 +21,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 export const CartListForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [discount, setDiscount] = useState("");
-  const [captcha, setCaptcha] = useState<string | null>("");
+  const [captcha, setCaptcha] = useState<string | null>(null);
 
   const foodList = useSelector(selectDeliveryList);
   const total = useSelector(selectTotalPrice);
@@ -71,10 +71,10 @@ export const CartListForm = () => {
     dispatch(getUserDiscount(discount));
   };
 
-  function onChange(value: string | null) {
+  const onChangeCaptcha = (value: string | null) => {
+    console.log(value);
     setCaptcha(value);
-  }
-
+  };
   return (
     <div className={cls.formBox}>
       <GoogleMaps />
@@ -149,7 +149,7 @@ export const CartListForm = () => {
           <ReCAPTCHA
             size="compact"
             sitekey={import.meta.env.VITE_API_KEY_RECAPTCHA}
-            onChange={onChange}
+            onChange={onChangeCaptcha}
           />
           <Button
             type="submit"
