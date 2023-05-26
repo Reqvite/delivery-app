@@ -51,18 +51,17 @@ const GoogleMaps = () => {
   useEffect(() => {
     if (address) {
       encodeAddress(address, setMarkerPosition);
-      const func = async () => {
-        console.log(window.google);
+      const setDirection = async () => {
         const directionsService = new window.google.maps.DirectionsService();
-        const results = await directionsService.route({
-          origin: "kiev",
-          destination: "nikopol",
+        const results: any = await directionsService.route({
+          origin: DEFOULT_GEO,
+          destination: address,
           travelMode: window.google.maps.TravelMode.DRIVING,
         });
 
-        console.log(results);
+        setDirectionsResponse(results);
       };
-      func();
+      setDirection();
     }
   }, [address]);
 
