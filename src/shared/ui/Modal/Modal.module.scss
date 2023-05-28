@@ -1,9 +1,9 @@
 .Modal {
   position: fixed;
-  inset: 0;
   opacity: 0;
   z-index: -1;
   pointer-events: none;
+  inset: 0;
 }
 
 .overlay {
