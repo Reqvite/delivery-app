@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { getCategories, getCategoryFood, getFoodCoupons } from "./operations";
 import { CategoriesSchema } from "./types";
 

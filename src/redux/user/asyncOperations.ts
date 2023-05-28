@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
 import { instance } from "~/shared/config/axiosConfig/axiosConfig";
+
 import { Food } from "../categories/types";
 
 interface Order {

@@ -1,17 +1,20 @@
+import "./styles/index.scss";
+
 import { Suspense, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
+
+import { Footer } from "~/components/Footer";
 import { Navbar } from "~/components/Navbar";
 import { Sidebar } from "~/components/Sidebar";
-import { Footer } from "~/components/Footer";
-import AppRouter from "./providers/routes/ui/AppRouter";
-import { AppDispatch } from "./providers/StoreProvider/config/config";
 import { getCategories, getCategoryFood } from "~/redux/categories/operations";
+import { selectPageIsLoading } from "~/redux/categories/selectors";
 import { selectActiveCategory } from "~/redux/user/selectors";
 import { MAIN_PAGE_FOOD } from "~/shared/const/const";
-import { selectPageIsLoading } from "~/redux/categories/selectors";
 import { Loader } from "~/shared/ui/Loader/Loader";
-import "./styles/index.scss";
+
+import AppRouter from "./providers/routes/ui/AppRouter";
+import { AppDispatch } from "./providers/StoreProvider/config/config";
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();

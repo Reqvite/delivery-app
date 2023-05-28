@@ -1,9 +1,11 @@
-import { toast } from "react-hot-toast";
-import { ChangeEvent, useState, useCallback, useEffect } from "react";
 import { useFormik } from "formik";
+import { ChangeEvent, useCallback, useEffect,useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
+
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
-import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
+import { GoogleMaps } from "~/components/GoogleMap";
 import { addUserOrder, getUserDiscount } from "~/redux/user/asyncOperations";
 import {
   selectDeliverData,
@@ -13,12 +15,12 @@ import {
   selectUserDiscount,
   selectUserIsLoading,
 } from "~/redux/user/selectors";
-import { Loader } from "~/shared/ui/Loader/Loader";
-import cls from "./CartListForm.module.scss";
-import { GoogleMaps } from "~/components/GoogleMap";
 import { userActions } from "~/redux/user/userSlice";
-import ReCAPTCHA from "react-google-recaptcha";
+import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
+import { Loader } from "~/shared/ui/Loader/Loader";
 import { Modal } from "~/shared/ui/Modal/Modal";
+
+import cls from "./CartListForm.module.scss";
 
 export const CartListForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -33,7 +35,14 @@ export const CartListForm = () => {
   const userDiscount = useSelector(selectUserDiscount);
   const deliveryData = useSelector(selectDeliverData);
 
-  const formik = useFormik({
+  interface FormData  {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+}
+
+  const formik = useFormik<FormData>({
     initialValues: {
       name: "",
       email: "",
@@ -79,7 +88,7 @@ export const CartListForm = () => {
     }
   }, [captcha, formik]);
 
-  const handleSubmit = ({ name, email, phone }, resetForm) => {
+  const handleSubmit = ({ name, email, phone }: FormData, resetForm: () => void) => {
     if (captchaVerified) {
       setCaptcha(null);
       const discountedFoodList =

@@ -5,14 +5,16 @@ import {
   useLoadScript,
 } from "@react-google-maps/api";
 import { useEffect, useState } from "react";
-import { Loader } from "~/shared/ui/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
+
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
 import { selectUserAddress } from "~/redux/user/selectors";
-import { encodeAddress, getGeoCode } from "~/shared/lib/map";
-import { DEFAULT_SHOP_GEO } from "~/shared/const/const";
-import cls from "./GoogleMaps.module.scss";
 import { userActions } from "~/redux/user/userSlice";
+import { DEFAULT_SHOP_GEO } from "~/shared/const/const";
+import { encodeAddress, getGeoCode } from "~/shared/lib/map";
+import { Loader } from "~/shared/ui/Loader/Loader";
+
+import cls from "./GoogleMaps.module.scss";
 
 const GoogleMaps = () => {
   const dispacth = useDispatch<AppDispatch>();

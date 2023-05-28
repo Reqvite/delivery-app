@@ -1,9 +1,6 @@
 .Modal {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   opacity: 0;
   z-index: -1;
   pointer-events: none;
@@ -22,9 +19,9 @@
   max-width: 60%;
   padding: 20px;
   border-radius: 12px;
+  background-color: var(--bg-color);
   transition: 0.3s transform;
   transform: scale(0.5);
-  background-color: var(--bg-color);
 }
 
 .opened {

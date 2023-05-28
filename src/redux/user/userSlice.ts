@@ -1,21 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
-import { UserDataSchema } from "./types";
+
+import { calculateTotalSummary } from "~/shared/lib/calculateTotalSummary";
+
 import { Food } from "../categories/types";
 import {
   addUserOrder,
   getUserDiscount,
   getUserHistory,
 } from "./asyncOperations";
-import { calculateTotalSummary } from "~/shared/lib/calculateTotalSummary";
 import {
   addFoodToList,
-  deleteFoodFromList,
   addQuantity,
+  clearState,
+  deleteFoodFromList,
   removeQuantity,
   updateQuantityFromInput,
-  clearState,
 } from "./operations";
+import { UserDataSchema } from "./types";
 
 const initialState: UserDataSchema = {
   deliveryList: [],

@@ -1,10 +1,11 @@
+import { BsCart3 } from "react-icons/bs";
+import { IoFastFoodSharp } from "react-icons/io5";
+import { IoTicketOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 
-import { AppLink } from "~/shared/ui/AppLink/AppLink";
-import { IoFastFoodSharp } from "react-icons/io5";
-import { BsCart3 } from "react-icons/bs";
-import { IoTicketOutline } from "react-icons/io5";
 import { selectUserTotalQuantity } from "~/redux/user/selectors";
+import { AppLink } from "~/shared/ui/AppLink/AppLink";
+
 import cls from "./Navbar.module.scss";
 
 export const Navbar = () => {

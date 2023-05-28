@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+
 import { CategoriesList } from '../CategoriesList/CategoriesList';
 import cls from './Sidebar.module.scss';
 

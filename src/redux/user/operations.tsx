@@ -1,11 +1,11 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 
-import { UserDataSchema } from "./types";
-
-import { Food } from "../categories/types";
 import { MAX_QUANTITY } from "~/shared/const/const";
 import { calculateTotalSummary } from "~/shared/lib/calculateTotalSummary";
+
+import { Food } from "../categories/types";
+import { UserDataSchema } from "./types";
 
 const calculateQuantity = (existingFood: Food) => {
   if (existingFood.quantity) {

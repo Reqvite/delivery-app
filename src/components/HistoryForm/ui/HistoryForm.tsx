@@ -1,12 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
 
-import cls from "./HistoryForm.module.scss";
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
+import { getUserHistory } from "~/redux/user/asyncOperations";
+import { selectUserIsLoading } from "~/redux/user/selectors";
 import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import { Loader } from "~/shared/ui/Loader/Loader";
-import { selectUserIsLoading } from "~/redux/user/selectors";
-import { getUserHistory } from "~/redux/user/asyncOperations";
+
+import cls from "./HistoryForm.module.scss";
 
 export const HistoryForm = () => {
   const dispatch = useDispatch<AppDispatch>();

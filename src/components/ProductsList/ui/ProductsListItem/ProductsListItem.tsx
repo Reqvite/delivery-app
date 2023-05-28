@@ -1,9 +1,11 @@
 import { FC } from "react";
 import { useDispatch } from "react-redux";
+
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
 import { Food } from "~/redux/categories/types";
-import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import { userActions } from "~/redux/user/userSlice";
+import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
+
 import cls from "./ProductsListItem.module.scss"
 
 

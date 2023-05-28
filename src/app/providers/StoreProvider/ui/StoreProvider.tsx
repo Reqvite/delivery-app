@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
 import { Provider } from "react-redux";
-import { persistor, store } from "../config/config";
 import { PersistGate } from "redux-persist/integration/react";
+
+import { persistor, store } from "../config/config";
 
 interface StoreProviderProps {
   children?: ReactNode;

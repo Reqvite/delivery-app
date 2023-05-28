@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
+
+import { CartEmptyBox } from "~/components/CartEmptyBox";
 import { CartList } from "~/components/CartList";
 import { CartListForm } from "~/components/CartListForm";
-import { CartEmptyBox } from "~/components/CartEmptyBox";
 import { selectDeliveryList } from "~/redux/user/selectors";
+
 import cls from "./ShoppingCartPage.module.scss";
 
 const ShoppingCartPage = () => {

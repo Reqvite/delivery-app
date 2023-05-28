@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { LinkProps, NavLink } from "react-router-dom";
+
 import { classNames } from "~/shared/lib/classNames";
+
 import cls from "./AppLink.module.scss";
 
 export enum AppLinkVariant {

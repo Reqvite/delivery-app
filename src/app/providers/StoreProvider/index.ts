@@ -1,4 +1,4 @@
-import { StoreProvider } from './ui/StoreProvider';
 import type { StateSchema } from './config/StateSchema';
+import { StoreProvider } from './ui/StoreProvider';
 
-export { StoreProvider,  StateSchema };
+export { StateSchema,StoreProvider };
