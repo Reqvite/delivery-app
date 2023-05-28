@@ -12,12 +12,13 @@ import { selectUserAddress } from "~/redux/user/selectors";
 import { encodeAddress, getGeoCode } from "~/shared/lib/map";
 import { DEFAULT_SHOP_GEO } from "~/shared/const/const";
 import cls from "./GoogleMaps.module.scss";
+import { userActions } from "~/redux/user/userSlice";
 
 const GoogleMaps = () => {
   const dispacth = useDispatch<AppDispatch>();
-  const [directionsResponse, setDirectionsResponse] = useState(null);
+  const [directionsResponse, setDirectionsResponse] = useState<any>(null);
+  const [map, setMap] = useState<google.maps.Map | null>(null);
   const address = useSelector(selectUserAddress);
-
   const [markerPosition, setMarkerPosition] = useState(DEFAULT_SHOP_GEO);
 
   const { isLoaded } = useLoadScript({
@@ -52,18 +53,25 @@ const GoogleMaps = () => {
     if (address) {
       encodeAddress(address, setMarkerPosition);
       const setDirection = async () => {
-        const directionsService = new window.google.maps.DirectionsService();
-        const results: any = await directionsService.route({
-          origin: DEFOULT_GEO,
-          destination: address,
-          travelMode: window.google.maps.TravelMode.DRIVING,
-        });
-
-        setDirectionsResponse(results);
+        if (map) {
+          const directionsService = new window.google.maps.DirectionsService();
+          const results: any = await directionsService.route({
+            origin: DEFAULT_SHOP_GEO,
+            destination: address,
+            travelMode: window.google.maps.TravelMode.DRIVING,
+          });
+          setDirectionsResponse(results);
+          dispacth(
+            userActions.setDelivaeryData({
+              distance: results.routes[0].legs[0].distance.text,
+              time: results.routes[0].legs[0].duration.text,
+            })
+          );
+        }
       };
       setDirection();
     }
-  }, [address]);
+  }, [address, dispacth, map]);
 
   return isLoaded ? (
     <GoogleMap
@@ -71,6 +79,7 @@ const GoogleMaps = () => {
       center={markerPosition}
       zoom={12}
       onClick={handleMapClick}
+      onLoad={(map) => setMap(map)}
     >
       <Marker position={markerPosition} title="place" />
       {directionsResponse && (

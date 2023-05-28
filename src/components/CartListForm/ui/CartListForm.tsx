@@ -1,11 +1,12 @@
 import { toast } from "react-hot-toast";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useCallback, useEffect } from "react";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
 import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import { addUserOrder, getUserDiscount } from "~/redux/user/asyncOperations";
 import {
+  selectDeliverData,
   selectDeliveryList,
   selectTotalPrice,
   selectUserAddress,
@@ -17,17 +18,20 @@ import cls from "./CartListForm.module.scss";
 import { GoogleMaps } from "~/components/GoogleMap";
 import { userActions } from "~/redux/user/userSlice";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Modal } from "~/shared/ui/Modal/Modal";
 
 export const CartListForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [discount, setDiscount] = useState("");
   const [captcha, setCaptcha] = useState<string | null>(null);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
 
   const foodList = useSelector(selectDeliveryList);
   const total = useSelector(selectTotalPrice);
   const isLoading = useSelector(selectUserIsLoading);
   const address = useSelector(selectUserAddress);
   const userDiscount = useSelector(selectUserDiscount);
+  const deliveryData = useSelector(selectDeliverData);
 
   const formik = useFormik({
     initialValues: {
@@ -36,35 +40,8 @@ export const CartListForm = () => {
       phone: "",
       address: address,
     },
-    onSubmit: ({ name, email, phone }, { resetForm }) => {
-      if (captcha) {
-        const discountedFoodList =
-          userDiscount !== 0
-            ? foodList.map((foodItem) => {
-                const discount = (total * userDiscount) / 100;
-                const discountedPrice =
-                  foodItem.totalPrice! -
-                  (foodItem.totalPrice! * discount) / total;
-                return {
-                  ...foodItem,
-                  totalPrice: +discountedPrice.toFixed(2),
-                };
-              })
-            : foodList;
-        dispatch(
-          addUserOrder({
-            foodList: discountedFoodList,
-            name,
-            email,
-            address,
-            phone: String(phone),
-          })
-        );
-
-        resetForm();
-      } else {
-        toast.error("Please complete the captcha.");
-      }
+    onSubmit: (values, { resetForm }) => {
+      handleSubmit(values, resetForm);
     },
   });
 
@@ -86,8 +63,55 @@ export const CartListForm = () => {
   };
 
   const onChangeCaptcha = (value: string | null) => {
-    setCaptcha(value);
+    if (value) {
+      setCaptcha(value);
+    }
   };
+
+  const onCloseModal = useCallback(() => {
+    setCaptchaVerified(false);
+  }, []);
+
+  useEffect(() => {
+    if (captcha) {
+      setCaptcha(null);
+      formik.submitForm();
+    }
+  }, [captcha, formik]);
+
+  const handleSubmit = ({ name, email, phone }, resetForm) => {
+    if (captchaVerified) {
+      setCaptcha(null);
+      const discountedFoodList =
+        userDiscount !== 0
+          ? foodList.map((foodItem) => {
+              const discount = (total * userDiscount) / 100;
+              const discountedPrice =
+                foodItem.totalPrice! -
+                (foodItem.totalPrice! * discount) / total;
+              return {
+                ...foodItem,
+                totalPrice: +discountedPrice.toFixed(2),
+              };
+            })
+          : foodList;
+      dispatch(
+        addUserOrder({
+          foodList: discountedFoodList,
+          name,
+          email,
+          address,
+          phone: String(phone),
+        })
+      );
+
+      onCloseModal();
+      resetForm();
+    } else {
+      setCaptchaVerified(true);
+    }
+  };
+
   return (
     <div className={cls.formBox}>
       <GoogleMaps />
@@ -103,6 +127,12 @@ export const CartListForm = () => {
             onChange={handleAddressChange}
             value={address}
           />
+          {deliveryData && (
+            <span className={cls.deliveryData}>
+              Delivery time: {deliveryData.time}, distance:{" "}
+              {deliveryData.distance}
+            </span>
+          )}
         </label>
         <label className={cls.label} htmlFor="name">
           Name
@@ -159,18 +189,20 @@ export const CartListForm = () => {
             </Button>
           </div>
           <span className={cls.price}>Total Price: $ {total.toFixed(2)}</span>
-          <ReCAPTCHA
-            size="compact"
-            sitekey={import.meta.env.VITE_API_KEY_RECAPTCHA}
-            onChange={onChangeCaptcha}
-          />
+          <Modal isOpen={captchaVerified} onClose={onCloseModal}>
+            <ReCAPTCHA
+              size="compact"
+              sitekey={import.meta.env.VITE_API_KEY_RECAPTCHA}
+              onChange={onChangeCaptcha}
+            />
+          </Modal>
           <Button
             type="submit"
             variant={ButtonVariant.BACKGROUND}
             className={cls.btn}
             disabled={isLoading}
           >
-            {isLoading ? (
+            {isLoading || captchaVerified ? (
               <Loader
                 width={20}
                 height={20}

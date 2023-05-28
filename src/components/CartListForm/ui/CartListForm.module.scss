@@ -22,6 +22,7 @@
 }
 
 .label {
+  position: relative;
   display: flex;
   flex-direction: column;
   font-weight: var(--font-weight-bold);
@@ -88,4 +89,10 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.deliveryData {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

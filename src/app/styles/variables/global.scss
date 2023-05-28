@@ -24,6 +24,10 @@
   --footer-height: 80px;
   --sidebar-width: 200px;
 
+  // z-indexes
+
+  --modal-z-index: 10;
+
   // colors
   --bg-color: #fff;
   --primary-color: #000;
@@ -34,6 +38,7 @@
   --green-light-color: #72cd41;
   --card-bg-color: #e7e7f0;
   --disabled-color: #808080;
+  --overlay-color: rgb(0 0 0 / 50%);
 
   // animations
   --transition-duration: 500ms;

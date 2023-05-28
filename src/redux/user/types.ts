@@ -10,4 +10,5 @@ export interface UserDataSchema {
   activeCategory?: string;
   discount: number;
   address: string;
+  deliveryData?: { time: string; distance: string };
 }

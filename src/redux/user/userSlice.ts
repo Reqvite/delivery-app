@@ -32,6 +32,12 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    setDelivaeryData: (
+      state,
+      action: PayloadAction<{ time: string; distance: string }>
+    ) => {
+      state.deliveryData = action.payload;
+    },
     setActiveCategory: (state, action: PayloadAction<string>) => {
       state.activeCategory = action.payload;
     },
