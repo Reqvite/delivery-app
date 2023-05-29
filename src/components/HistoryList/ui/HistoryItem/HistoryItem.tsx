@@ -12,6 +12,7 @@ import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import cls from "./HistoryItem.module.scss";
 
 interface HistoryItemProps {
+  _id: string
   createdAt: string;
   foodList: Food[];
 }

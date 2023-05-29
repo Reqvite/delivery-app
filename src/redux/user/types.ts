@@ -1,6 +1,8 @@
 import { Food } from "../categories/types";
 
 export interface Order {
+  _id: string,
+  createdAt: string;
   name: string;
   email: string;
   phone: string;

@@ -2,7 +2,19 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { instance } from "~/shared/config/axiosConfig/axiosConfig";
 
-import { Order } from "./types";
+import { Food } from "../categories/types";
+
+
+
+export interface Order {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  foodList: Food[];
+  totalPrice: number;
+  discount: number;
+}
 
 export const addUserOrder = createAsyncThunk(
   "user/addUserOrder",
