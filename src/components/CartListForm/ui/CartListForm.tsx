@@ -34,6 +34,7 @@ export const CartListForm = () => {
   const address = useSelector(selectUserAddress);
   const userDiscount = useSelector(selectUserDiscount);
   const deliveryData = useSelector(selectDeliverData);
+  const totalPrice = useSelector(selectTotalPrice)
 
   interface FormData  {
   name: string;
@@ -111,6 +112,8 @@ export const CartListForm = () => {
           email,
           address,
           phone: String(phone),
+          totalPrice,
+          discount: userDiscount
         })
       );
 

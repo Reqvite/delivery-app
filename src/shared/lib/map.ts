@@ -1,8 +1,9 @@
-import axios from "axios";
 import { Dispatch, SetStateAction } from "react";
 
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
 import { userActions } from "~/redux/user/userSlice";
+
+import { mapGeoInstance } from "../config/axiosConfig/axiosConfig";
 
 type MarkerPosition = {
   lat: number;
@@ -15,8 +16,8 @@ export const encodeAddress = async (
 ) => {
   try {
     const encodedAddress = encodeURIComponent(address);
-    const response = await axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${
+    const response = await mapGeoInstance.get(
+      `json?address=${encodedAddress}&key=${
         import.meta.env.VITE_API_KEY_MAPS_NO_RESTRICTION
       }`
     );
@@ -41,8 +42,8 @@ export const getGeoCode = async (
   lng: number
 ) => {
   try {
-    const { data } = await axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${
+    const { data } = await mapGeoInstance.get(
+      `json?latlng=${lat},${lng}&key=${
         import.meta.env.VITE_API_KEY_MAPS_NO_RESTRICTION
       }`
     );
