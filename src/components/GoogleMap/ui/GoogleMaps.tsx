@@ -18,7 +18,8 @@ import cls from "./GoogleMaps.module.scss";
 
 const GoogleMaps = () => {
   const dispacth = useDispatch<AppDispatch>();
-  const [directionsResponse, setDirectionsResponse] = useState<any>(null);
+  const [directionsResponse, setDirectionsResponse] = useState<google.maps.DirectionsResult>();
+
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const address = useSelector(selectUserAddress);
   const [markerPosition, setMarkerPosition] = useState(DEFAULT_SHOP_GEO);
@@ -83,6 +84,7 @@ const GoogleMaps = () => {
       setDirection();
     }
   }, [address, dispacth, map]);
+
 
   return isLoaded ? (
     <GoogleMap
