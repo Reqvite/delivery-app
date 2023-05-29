@@ -1,6 +1,8 @@
-import cls from "./NotFoundPage.module.scss";
 import { Link } from "react-router-dom";
+
 import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
+
+import cls from "./NotFoundPage.module.scss";
 
 export const NotFoundPage = () => {
   return (

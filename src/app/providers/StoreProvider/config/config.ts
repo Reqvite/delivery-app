@@ -1,9 +1,11 @@
-import { ReducersMapObject, configureStore } from "@reduxjs/toolkit";
-import { StateSchema } from "./StateSchema";
+import { configureStore,ReducersMapObject } from "@reduxjs/toolkit";
+import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+
 import { categoriesReducer } from "~/redux/categories/categoriesSlice";
 import { userReducer } from "~/redux/user/userSlice";
-import { persistReducer, persistStore } from "redux-persist";
+
+import { StateSchema } from "./StateSchema";
 
 const userPersistConfig = {
   key: "user",

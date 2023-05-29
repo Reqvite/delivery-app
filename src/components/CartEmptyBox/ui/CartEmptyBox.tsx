@@ -1,6 +1,8 @@
-import cls from "./CartEmptyBox.module.scss";
-import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import { Link } from "react-router-dom";
+
+import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
+
+import cls from "./CartEmptyBox.module.scss";
 
 export const CartEmptyBox = () => {
   return (

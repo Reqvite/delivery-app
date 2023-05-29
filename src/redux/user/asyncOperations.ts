@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
 import { instance } from "~/shared/config/axiosConfig/axiosConfig";
+
 import { Food } from "../categories/types";
 
 interface Order {
@@ -34,7 +36,7 @@ export const getUserHistory = createAsyncThunk(
       return thunkAPI.rejectWithValue(e.response.data.message);
     }
   }
-);
+)
 
 export const getUserDiscount = createAsyncThunk(
   "user/getUserDiscount",
@@ -45,6 +47,7 @@ export const getUserDiscount = createAsyncThunk(
       );
       return response.data.discount;
     } catch (e: any) {
+      
       return thunkAPI.rejectWithValue(e.response.data.message);
     }
   }

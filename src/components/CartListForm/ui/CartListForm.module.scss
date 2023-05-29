@@ -22,6 +22,7 @@
 }
 
 .label {
+  position: relative;
   display: flex;
   flex-direction: column;
   font-weight: var(--font-weight-bold);
@@ -88,4 +89,16 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.deliveryData {
+  position: absolute;
+  top: -15px;
+  right: 0;
+  font: var(--font-s);
+
+  @media screen and (width >= 860px) {
+    top: 0;
+    font: var(--font-m);
+  }
 }

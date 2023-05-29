@@ -1,4 +1,5 @@
 import { RouteProps } from "react-router-dom";
+
 import { CouponsPage } from "~/pages/CouponsPage";
 import { HistoryPage } from "~/pages/HistoryPage";
 import { MainPage } from "~/pages/MainPage";

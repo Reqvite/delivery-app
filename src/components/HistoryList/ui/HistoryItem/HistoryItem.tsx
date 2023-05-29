@@ -1,13 +1,15 @@
-import { Food } from "~/redux/categories/types";
-import cls from "./HistoryItem.module.scss";
-import { FC } from "react";
-import { getDate } from "~/shared/lib/getDate";
 import { nanoid } from "@reduxjs/toolkit";
-import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
+import { FC } from "react";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
-import { userActions } from "~/redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
+
+import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
+import { Food } from "~/redux/categories/types";
+import { userActions } from "~/redux/user/userSlice";
+import { getDate } from "~/shared/lib/getDate";
+import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
+
+import cls from "./HistoryItem.module.scss";
 
 interface HistoryItemProps {
   createdAt: string;

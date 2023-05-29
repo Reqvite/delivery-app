@@ -1,6 +1,8 @@
-import { ReactNode, FC, ButtonHTMLAttributes } from "react";
-import cls from "./Button.module.scss";
+import { ButtonHTMLAttributes,FC, ReactNode } from "react";
+
 import { classNames } from "~/shared/lib/classNames";
+
+import cls from "./Button.module.scss";
 
 export enum ButtonVariant {
   CLEAR = "clear",

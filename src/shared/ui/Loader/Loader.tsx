@@ -1,6 +1,8 @@
 import { Oval } from "react-loader-spinner";
-import cls from "./Loader.module.scss";
+
 import { classNames } from "~/shared/lib/classNames";
+
+import cls from "./Loader.module.scss";
 
 interface LoaderProps {
   className?: string;

@@ -1,16 +1,18 @@
-import { useDispatch } from "react-redux";
-import cls from "./CartListItem.module.scss";
 import { FC, useState } from "react";
-import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
-import { Food } from "~/redux/categories/types";
 import {
-  AiOutlineClose,
   AiFillMinusCircle,
   AiFillPlusCircle,
+  AiOutlineClose,
 } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+
+import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
+import { Food } from "~/redux/categories/types";
 import { userActions } from "~/redux/user/userSlice";
-import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
 import { MAX_QUANTITY } from "~/shared/const/const";
+import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
+
+import cls from "./CartListItem.module.scss";
 
 export const CartListItem: FC<Food> = (food) => {
   const { _id, title, img_url, quantity, price } = food;

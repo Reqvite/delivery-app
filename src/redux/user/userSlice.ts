@@ -1,21 +1,25 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
-import { UserDataSchema } from "./types";
-import { Food } from "../categories/types";
+
 import {
   addUserOrder,
   getUserDiscount,
   getUserHistory,
 } from "./asyncOperations";
-import { calculateTotalSummary } from "~/shared/lib/calculateTotalSummary";
 import {
   addFoodToList,
-  deleteFoodFromList,
   addQuantity,
-  removeQuantity,
-  updateQuantityFromInput,
   clearState,
+  deleteFoodFromList,
+  emptyCart,
+  removeQuantity,
+  setActiveCategory,
+  setAddress,
+  setDelivaeryData,
+  setRepeatOrder,
+  updateQuantityFromInput,
 } from "./operations";
+import { UserDataSchema } from "./types";
 
 const initialState: UserDataSchema = {
   deliveryList: [],
@@ -32,29 +36,16 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setActiveCategory: (state, action: PayloadAction<string>) => {
-      state.activeCategory = action.payload;
-    },
+    setDelivaeryData,
+    setActiveCategory,
     addFoodToList,
     deleteFoodFromList,
     addQuantity,
     removeQuantity,
     updateQuantityFromInput,
-    emptyCart: (state) => {
-      clearState(state);
-    },
-    setAddress: (state, action: PayloadAction<string>) => {
-      state.address = action.payload;
-    },
-    setRepeatOrder: (state, action: PayloadAction<Food[]>) => {
-      clearState(state);
-      state.deliveryList = action.payload;
-      const { totalPrice, totalQuantity } = calculateTotalSummary(
-        state.deliveryList
-      );
-      state.totalPrice = totalPrice;
-      state.totalQuantity = totalQuantity;
-    },
+    emptyCart,
+    setAddress,
+    setRepeatOrder,
   },
   extraReducers: (builder) => {
     builder

@@ -1,11 +1,11 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 
-import { UserDataSchema } from "./types";
-
-import { Food } from "../categories/types";
 import { MAX_QUANTITY } from "~/shared/const/const";
 import { calculateTotalSummary } from "~/shared/lib/calculateTotalSummary";
+
+import { Food } from "../categories/types";
+import { UserDataSchema } from "./types";
 
 const calculateQuantity = (existingFood: Food) => {
   if (existingFood.quantity) {
@@ -158,4 +158,42 @@ export const updateQuantityFromInput = (
   );
   state.totalPrice = totalPrice;
   state.totalQuantity = totalQuantity;
+};
+
+export const setRepeatOrder = (
+  state: UserDataSchema,
+  action: PayloadAction<Food[]>
+) => {
+  clearState(state);
+  state.deliveryList = action.payload;
+  const { totalPrice, totalQuantity } = calculateTotalSummary(
+    state.deliveryList
+  );
+  state.totalPrice = totalPrice;
+  state.totalQuantity = totalQuantity;
+};
+
+export const setDelivaeryData = (
+  state: UserDataSchema,
+  action: PayloadAction<{ time: string; distance: string }>
+) => {
+  state.deliveryData = action.payload;
+};
+
+export const setActiveCategory = (
+  state: UserDataSchema,
+  action: PayloadAction<string>
+) => {
+  state.activeCategory = action.payload;
+};
+
+export const setAddress = (
+  state: UserDataSchema,
+  action: PayloadAction<string>
+) => {
+  state.address = action.payload;
+};
+
+export const emptyCart = (state: UserDataSchema) => {
+  clearState(state);
 };

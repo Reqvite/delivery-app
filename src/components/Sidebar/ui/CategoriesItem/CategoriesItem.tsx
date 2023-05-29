@@ -1,10 +1,12 @@
 import { FC } from "react";
-import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import { classNames } from "~/shared/lib/classNames";
-import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
+import { useDispatch } from "react-redux";
+
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
 import { getCategoryFood } from "~/redux/categories/operations";
+import { classNames } from "~/shared/lib/classNames";
+import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
+
 import cls from "./CategoriesItem.module.scss";
 
 export enum CategoryItemStatus {

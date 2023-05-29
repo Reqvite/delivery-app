@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
-import { ProductsListItem } from "../ProductsListItem/ProductsListItem";
+
 import { selectListOfFood } from "~/redux/categories/selectors";
+
+import { ProductsListItem } from "../ProductsListItem/ProductsListItem";
 import cls from "./ProductsList.module.scss";
 
 export const ProductsList = () => {

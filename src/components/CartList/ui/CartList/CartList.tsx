@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
+
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
 import { selectDeliveryList } from "~/redux/user/selectors";
 import { userActions } from "~/redux/user/userSlice";
+import { Button, ButtonVariant } from "~/shared/ui/Button/Button";
+
 import { CartListItem } from "../CartListItem/CartListItem";
 import cls from "./CartList.module.scss";
 
