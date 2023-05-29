@@ -57,19 +57,26 @@ const GoogleMaps = () => {
       const setDirection = async () => {
         if (map) {
           const directionsService = new window.google.maps.DirectionsService();
-          const results = await directionsService.route({
-            origin: DEFAULT_SHOP_GEO,
-            destination: address,
-            travelMode: window.google.maps.TravelMode.DRIVING,
-          });
-          setDirectionsResponse(results);
-          if (results.routes[0].legs[0].distance && results.routes[0].legs[0].duration) {
-            dispacth(
-            userActions.setDelivaeryData({
-              distance: results.routes[0].legs[0].distance.text,
-              time: results.routes[0].legs[0].duration.text,
-            })
-          ); 
+          try {
+            const results = await directionsService.route({
+              origin: DEFAULT_SHOP_GEO,
+              destination: address,
+              travelMode: window.google.maps.TravelMode.DRIVING,
+            });
+            setDirectionsResponse(results);
+            if (
+              results.routes[0].legs[0].distance &&
+              results.routes[0].legs[0].duration
+            ) {
+              dispacth(
+                userActions.setDelivaeryData({
+                  distance: results.routes[0].legs[0].distance.text,
+                  time: results.routes[0].legs[0].duration.text,
+                })
+              );
+            }
+          } catch (e) {
+            /* empty */
           }
         }
       };
