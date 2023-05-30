@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   AiFillFacebook,
   AiFillInstagram,
@@ -7,6 +8,7 @@ import {
 import cls from "./Footer.module.scss";
 
 export const Footer = () => {
+  const {t} = useTranslation()
   return (
     <footer className={cls.Footer}>
       <ul className={cls.list}>
@@ -26,7 +28,7 @@ export const Footer = () => {
           </a>
         </li>
       </ul>
-      <p>&copy; {new Date().getFullYear()} All Rights Reserved.</p>
+      <p>&copy; {new Date().getFullYear()} {t('All Rights Reserved')}.</p>
     </footer>
   );
 };

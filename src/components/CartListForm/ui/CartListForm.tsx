@@ -1,7 +1,8 @@
 import { useFormik } from "formik";
-import { ChangeEvent, useCallback, useEffect,useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
@@ -24,6 +25,7 @@ import cls from "./CartListForm.module.scss";
 
 export const CartListForm = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const { t } = useTranslation();
   const [discount, setDiscount] = useState("");
   const [captcha, setCaptcha] = useState<string | null>(null);
   const [captchaVerified, setCaptchaVerified] = useState(false);
@@ -34,14 +36,14 @@ export const CartListForm = () => {
   const address = useSelector(selectUserAddress);
   const userDiscount = useSelector(selectUserDiscount);
   const deliveryData = useSelector(selectDeliverData);
-  const totalPrice = useSelector(selectTotalPrice)
+  const totalPrice = useSelector(selectTotalPrice);
 
-  interface FormData  {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-}
+  interface FormData {
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+  }
 
   const formik = useFormik<FormData>({
     initialValues: {
@@ -63,7 +65,7 @@ export const CartListForm = () => {
 
   const handleSubmitCouponButton = () => {
     if (userDiscount !== 0) {
-      toast.error("You already applied your coupon.");
+      toast.error(`${t('You already applied your coupon')}.`);
       return;
     }
     if (!discount) {
@@ -89,7 +91,10 @@ export const CartListForm = () => {
     }
   }, [captcha, formik]);
 
-  const handleSubmit = ({ name, email, phone }: FormData, resetForm: () => void) => {
+  const handleSubmit = (
+    { name, email, phone }: FormData,
+    resetForm: () => void
+  ) => {
     if (captchaVerified) {
       setCaptcha(null);
       const discountedFoodList =
@@ -113,7 +118,7 @@ export const CartListForm = () => {
           address,
           phone: String(phone),
           totalPrice,
-          discount: userDiscount
+          discount: userDiscount,
         })
       );
 
@@ -127,10 +132,10 @@ export const CartListForm = () => {
   return (
     <div className={cls.formBox}>
       <GoogleMaps />
-      <h1>Add contact details for your order</h1>
+      <h1>{t("Add contact details for your order")}</h1>
       <form className={cls.CartListForm} onSubmit={formik.handleSubmit}>
         <label className={cls.label} htmlFor="address">
-          Address
+          {t("Address")}
           <input
             name="address"
             className={cls.input}
@@ -141,13 +146,13 @@ export const CartListForm = () => {
           />
           {deliveryData && (
             <span className={cls.deliveryData}>
-              Delivery time: {deliveryData.time}, distance:{" "}
+              {t("Delivery time")}: {deliveryData.time}, {t("distance")}:{" "}
               {deliveryData.distance}
             </span>
           )}
         </label>
         <label className={cls.label} htmlFor="name">
-          Name
+          {t("Name")}
           <input
             name="name"
             className={cls.input}
@@ -159,7 +164,7 @@ export const CartListForm = () => {
           />
         </label>
         <label className={cls.label} htmlFor="email">
-          Email
+          {t("Email")}
           <input
             name="email"
             className={cls.input}
@@ -169,11 +174,11 @@ export const CartListForm = () => {
             value={formik.values.email}
           />
           <p className={cls.text}>
-            We’ll send order confirmations and receipts to this email.
+            {t("We will send order confirmations and receipts to this email")}.
           </p>
         </label>
         <label className={cls.label} htmlFor="phone">
-          Phone
+          {t("Phone")}
           <input
             name="phone"
             className={cls.input}
@@ -182,12 +187,14 @@ export const CartListForm = () => {
             onChange={formik.handleChange}
             value={formik.values.phone}
           />
-          <p className={cls.text}>We’ll send order updates to this number.</p>
+          <p className={cls.text}>
+            {t("We will send order updates to this number")}.
+          </p>
         </label>
         <div className={cls.btnBox}>
           <div className={cls.discountBox}>
             <input
-              placeholder="Write your coupon"
+              placeholder={`${t("Write your coupon")}`}
               type="text"
               className={cls.input}
               onChange={(e) => setDiscount(e.target.value)}
@@ -197,10 +204,10 @@ export const CartListForm = () => {
               variant={ButtonVariant.OUTLINED}
               onClick={handleSubmitCouponButton}
             >
-              Get discount
+              {t('Get discount')}
             </Button>
           </div>
-          <span className={cls.price}>Total Price: $ {total.toFixed(2)}</span>
+          <span className={cls.price}>{t('Total Price')}: $ {total.toFixed(2)}</span>
           <Modal isOpen={captchaVerified} onClose={onCloseModal}>
             <ReCAPTCHA
               size="compact"
@@ -222,7 +229,7 @@ export const CartListForm = () => {
                 color="#000"
               />
             ) : (
-              "Confirm the order"
+              `${t("Confirm the order")}`
             )}
           </Button>
         </div>

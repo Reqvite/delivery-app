@@ -1,6 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 
+import i18n from "~/shared/config/i18n/i18n";
 import { MAX_QUANTITY } from "~/shared/const/const";
 import { calculateTotalSummary } from "~/shared/lib/calculateTotalSummary";
 
@@ -17,7 +18,7 @@ const calculateQuantity = (existingFood: Food) => {
 const checkDiscount = (discount: number) => {
   if (discount !== 0) {
     toast.error(
-      "You have already applied a coupon, complete your purchase, or empty your shopping cart to create a new order."
+      i18n.t("Already applied error") 
     );
     return true;
   }
@@ -46,7 +47,7 @@ export const addFoodToList = (
 
   if (existingFood) {
     if (existingFood.quantity! >= MAX_QUANTITY) {
-      toast.error(`You cannot add a quantity greater than ${MAX_QUANTITY}.`);
+      toast.error(`${i18n.t("You cannot add a quantity greater than") } ${MAX_QUANTITY}.`);
       return;
     }
     calculateQuantity(existingFood);
@@ -64,7 +65,7 @@ export const addFoodToList = (
   );
   state.totalPrice = totalPrice;
   state.totalQuantity = totalQuantity;
-  toast.success(`${action.payload?.title} added to cart.`);
+  toast.success(`${action.payload?.title} ${i18n.t('added to cart')}.`);
 };
 
 export const deleteFoodFromList = (
