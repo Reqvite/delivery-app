@@ -1,5 +1,6 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -18,6 +19,7 @@ interface HistoryItemProps {
 }
 
 export const HistoryItem: FC<HistoryItemProps> = (props) => {
+  const {t} = useTranslation()
   const { createdAt, foodList } = props;
   const navigate = useNavigate();
 
@@ -30,20 +32,20 @@ export const HistoryItem: FC<HistoryItemProps> = (props) => {
   return (
     <div className={cls.HistoryItem}>
       <div className={cls.dataBox}>
-        <p>Order date: </p>
+        <p>{t('Order date')}: </p>
         <span>{getDate(createdAt)}</span>
       </div>
-      <p className={cls.listTitle}>Ordered food </p>
+      <p className={cls.listTitle}>{t('Ordered food')} </p>
       <ul className={cls.list}>
         {foodList?.map(({ title, img_url, quantity, totalPrice }) => (
           <li key={nanoid()} className={cls.listItem}>
             <p className={cls.listTitle}>{title}</p>
             <div className={cls.infoBox}>
-              <p>Quantity: </p>
+              <p>{t('Quantity')}: </p>
               <span> {quantity}</span>
             </div>
             <div className={cls.infoBox}>
-              <p>Total price: </p>
+              <p>{t('Total price')}: </p>
               <span> {totalPrice?.toFixed(2)}</span>
             </div>
             <img
@@ -58,7 +60,7 @@ export const HistoryItem: FC<HistoryItemProps> = (props) => {
       </ul>
       <div className={cls.btn}>
         <Button onClick={hanldeRepeatButton} variant={ButtonVariant.BACKGROUND}>
-          Repeat order
+          {t('Repeat order')}
         </Button>
       </div>
     </div>

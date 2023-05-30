@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
@@ -16,6 +17,7 @@ export const ProductsListItem: FC<Food> = (food) => {
     price,
     img_url,
   } = food
+  const {t} = useTranslation()
   const dispatch = useDispatch<AppDispatch>()
 
   const hanldeAddButton = () => {
@@ -29,7 +31,7 @@ export const ProductsListItem: FC<Food> = (food) => {
         <h2 className={cls.title}>{title}</h2>
         <div className={cls.buttonBox}>
           <span>${price}</span>
-          <Button className={cls.btn} variant={ButtonVariant.BACKGROUND} onClick={hanldeAddButton}>Add to cart</Button>
+          <Button className={cls.btn} variant={ButtonVariant.BACKGROUND} onClick={hanldeAddButton}>{t('Add to cart')}</Button>
         </div>
       </div>
     </li >

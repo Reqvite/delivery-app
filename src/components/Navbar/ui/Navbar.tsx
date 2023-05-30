@@ -1,14 +1,17 @@
+import { useTranslation } from "react-i18next";
 import { BsCart3 } from "react-icons/bs";
 import { IoFastFoodSharp } from "react-icons/io5";
 import { IoTicketOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 
+import { LangSwitcher } from "~/components/LangSwitcher";
 import { selectUserTotalQuantity } from "~/redux/user/selectors";
 import { AppLink } from "~/shared/ui/AppLink/AppLink";
 
 import cls from "./Navbar.module.scss";
 
 export const Navbar = () => {
+  const {t} = useTranslation()
   const totalQuantity = useSelector(selectUserTotalQuantity);
 
   return (
@@ -21,12 +24,13 @@ export const Navbar = () => {
             </AppLink>
           </li>
           <li>
-            <AppLink to="/">Shop</AppLink>
+            <AppLink to="/">{t("Shop")}</AppLink>
           </li>
           <li>
-            <AppLink to="/history">History</AppLink>
+            <AppLink to="/history">{t("History")}</AppLink>
           </li>
         </ul>
+        <LangSwitcher className={cls.langSwitcher} />
         <AppLink to="/coupons">
           <IoTicketOutline size={35} />
         </AppLink>

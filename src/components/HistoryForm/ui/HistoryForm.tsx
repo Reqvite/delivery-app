@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
@@ -10,6 +11,7 @@ import { Loader } from "~/shared/ui/Loader/Loader";
 import cls from "./HistoryForm.module.scss";
 
 export const HistoryForm = () => {
+  const {t} = useTranslation()
   const dispatch = useDispatch<AppDispatch>();
   const isLoading = useSelector(selectUserIsLoading);
 
@@ -25,10 +27,10 @@ export const HistoryForm = () => {
 
   return (
     <div className={cls.formBox}>
-      <h1>Write your email or phone to get yor orders history.</h1>
+      <h1>{t('Write your email or phone to get yor orders history')}.</h1>
       <form className={cls.HistoryForm} onSubmit={formik.handleSubmit}>
         <label className={cls.label} htmlFor="searchValue">
-          Email or phone
+          {t('Email or phone')}
           <input
             name="searchValue"
             className={cls.input}
@@ -52,7 +54,7 @@ export const HistoryForm = () => {
                 color="#000"
               />
             ) : (
-              "Search"
+              `${t('Search')}`
             )}
           </Button>
         </div>

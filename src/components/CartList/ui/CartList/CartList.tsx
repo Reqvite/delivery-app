@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
@@ -9,6 +10,7 @@ import { CartListItem } from "../CartListItem/CartListItem";
 import cls from "./CartList.module.scss";
 
 export const CartList = () => {
+  const { t } = useTranslation();
   const deliveryList = useSelector(selectDeliveryList);
   const dispatch = useDispatch<AppDispatch>();
   const onEmptyCartButton = () => {
@@ -22,7 +24,7 @@ export const CartList = () => {
       ))}
       <li className={cls.btnItem}>
         <Button variant={ButtonVariant.BACKGROUND} onClick={onEmptyCartButton}>
-          Empty cart
+          {t('Empty cart')}
         </Button>
       </li>
     </ul>

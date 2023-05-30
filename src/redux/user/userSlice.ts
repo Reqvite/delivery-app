@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 
+import i18n from "~/shared/config/i18n/i18n";
+
 import {
   addUserOrder,
   getUserDiscount,
@@ -57,7 +59,7 @@ export const userSlice = createSlice({
         clearState(state);
         state.isLoading = false;
         toast.success(
-          `Thank you for your order, our manager will contact you soon.`
+          `${i18n.t('Thank you for your order')}.`
         );
       })
       .addCase(addUserOrder.rejected, (state, action: any) => {
@@ -85,7 +87,7 @@ export const userSlice = createSlice({
         state.discount = action.payload;
         const discount = (state.totalPrice * action.payload) / 100;
         state.totalPrice = state.totalPrice - discount;
-        toast.success(`Coupon successfully applied.`);
+        toast.success(`${i18n.t('Coupon successfully applied')}.`);
       })
       .addCase(getUserDiscount.rejected, (state, action: any) => {
         state.error = action.payload;
