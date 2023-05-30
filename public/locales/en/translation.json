@@ -37,5 +37,6 @@
   "Coupon successfully applied": "Coupon successfully applied",
   "You already applied your coupon": "You already applied your coupon",
   "Copied": "Copied",
-  "You can only add products from one store": "You can only add products from one store at a time, or you can empty your cart to select another store"
+  "You can only add products from one store": "You can only add products from one store at a time, or you can empty your cart to select another store",
+  "All stores": "All stores"
 }
