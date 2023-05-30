@@ -37,9 +37,9 @@ const App = () => {
           <Sidebar />
           <AppRouter />
         </main>
-      </Suspense>
       <Toaster />
-      <Footer />
+          <Footer />
+      </Suspense>
     </div>
   );
 };
