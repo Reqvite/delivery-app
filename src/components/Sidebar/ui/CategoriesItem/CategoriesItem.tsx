@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { toast } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
 import { AppDispatch } from "~/app/providers/StoreProvider/config/config";
@@ -24,12 +25,13 @@ export const CategoriesItem: FC<CategoryListItemProps> = ({
   category,
   active,
 }) => {
+  const {t} = useTranslation()
   const dispatch = useDispatch<AppDispatch>();
 
   const handleCategoryButton = (categoryName: string) => {
     if (active === CategoryItemStatus.DISABLED) {
       toast.error(
-        "You can only add products from one store at a time, or you can empty your cart to select another store."
+        `${t('You can only add products from one store')}.`
       );
       return;
     }
