@@ -4,8 +4,6 @@ import { instance } from "~/shared/config/axiosConfig/axiosConfig";
 
 import { Food } from "../categories/types";
 
-
-
 export interface Order {
   name: string;
   email: string;
@@ -20,7 +18,11 @@ export const addUserOrder = createAsyncThunk(
   "user/addUserOrder",
   async (order: Order, thunkAPI) => {
     try {
-      const response = await instance.post(`api/user/order`, order);
+      const response: any = await instance.post(`api/user/order`, order);
+
+      window.location.replace(
+        `https://www.liqpay.ua/api/3/checkout?data=${response.data.liqPaySignature.data}&signature=${response.data.liqPaySignature.signature}`
+      );
       return response.data.order;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.response.data.message);
@@ -40,7 +42,7 @@ export const getUserHistory = createAsyncThunk(
       return thunkAPI.rejectWithValue(e.response.data.message);
     }
   }
-)
+);
 
 export const getUserDiscount = createAsyncThunk(
   "user/getUserDiscount",
@@ -51,7 +53,6 @@ export const getUserDiscount = createAsyncThunk(
       );
       return response.data.discount;
     } catch (e: any) {
-      
       return thunkAPI.rejectWithValue(e.response.data.message);
     }
   }
