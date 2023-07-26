@@ -20,9 +20,9 @@ export const addUserOrder = createAsyncThunk(
     try {
       const response: any = await instance.post(`api/user/order`, order);
 
-      window.location.replace(
-        `https://www.liqpay.ua/api/3/checkout?data=${response.data.liqPaySignature.data}&signature=${response.data.liqPaySignature.signature}`
-      );
+      const checkoutUrl = `https://www.liqpay.ua/api/3/checkout?data=${response.data.liqPaySignature.data}&signature=${response.data.liqPaySignature.signature}`;
+
+      window.open(checkoutUrl, "_blank");
       return response.data.order;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.response.data.message);
