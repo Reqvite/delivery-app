@@ -22,8 +22,7 @@ export const addUserOrder = createAsyncThunk(
 
       const checkoutUrl = `https://www.liqpay.ua/api/3/checkout?data=${response.data.liqPaySignature.data}&signature=${response.data.liqPaySignature.signature}`;
 
-      const newTab = window.open();
-      newTab?.location.assign(checkoutUrl);
+      window.location.href = checkoutUrl
       return response.data;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.response.data.message);
